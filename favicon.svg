@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="s-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="55%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="s-border" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="50%" stop-color="#0ea5e9"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <linearGradient id="s-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#060b11"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Rounded Squircle Badge Base -->
+  <rect x="2" y="2" width="44" height="44" rx="12" fill="url(#s-bg)" stroke="url(#s-border)" stroke-width="2"/>
+  
+  <!-- Cyber Accent Corners -->
+  <path d="M 7 13 L 7 7 L 13 7" stroke="#38bdf8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"/>
+  <path d="M 41 35 L 41 41 L 35 41" stroke="#10b981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.75"/>
+  
+  <!-- Glowing Halo -->
+  <path d="M 33 15.5 C 30 12, 25.5 12, 21.5 12 C 16.5 12, 13.5 15, 13.5 19 C 13.5 22.8, 16.8 24.8, 21 26 L 27 27.8 C 31.2 29, 34.5 31, 34.5 34.8 C 34.5 38.8, 31.5 41.8, 26.5 41.8 C 22.5 41.8, 17.5 39.5, 14.5 36.5" stroke="url(#s-grad)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.3"/>
+  
+  <!-- Main "S" Monogram Vector -->
+  <path d="M 33 15.5 C 30 12, 25.5 12, 21.5 12 C 16.5 12, 13.5 15, 13.5 19 C 13.5 22.8, 16.8 24.8, 21 26 L 27 27.8 C 31.2 29, 34.5 31, 34.5 34.8 C 34.5 38.8, 31.5 41.8, 26.5 41.8 C 22.5 41.8, 17.5 39.5, 14.5 36.5" stroke="url(#s-grad)" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Cyber Neon Terminal Dots -->
+  <circle cx="33" cy="15.5" r="2.5" fill="#38bdf8"/>
+  <circle cx="14.5" cy="36.5" r="2.5" fill="#10b981"/>
+</svg>

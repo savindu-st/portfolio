@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Savindu Suranjith Thennakoon | Portfolio</title>
     <meta name="description" content="Portfolio of Savindu Suranjith Thennakoon, a Full-Stack & AI Engineer.">
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="alternate icon" href="favicon.svg">
     <link rel="stylesheet" href="style.css">
     <!-- Google Fonts for sleek typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,6 +17,7 @@
     <!-- Three.js for Lightweight Interactive 3D Graphics -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
+
 <body>
 
     <!-- Scroll Progress Indicator -->
@@ -21,7 +26,50 @@
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
-            <a href="#hero" class="logo">Savindu<span>.</span></a>
+            <a href="#hero" class="logo" aria-label="Savindu Suranjith - Home">
+                <div class="logo-badge">
+                    <div class="logo-badge-glow"></div>
+                    <svg class="logo-s-svg" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="s-gradient-cyan-emerald" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#38bdf8" />
+                                <stop offset="55%" stop-color="#0ea5e9" />
+                                <stop offset="100%" stop-color="#10b981" />
+                            </linearGradient>
+                            <linearGradient id="badge-border-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="rgba(56, 189, 248, 0.75)" />
+                                <stop offset="50%" stop-color="rgba(14, 165, 233, 0.25)" />
+                                <stop offset="100%" stop-color="rgba(16, 185, 129, 0.75)" />
+                            </linearGradient>
+                            <linearGradient id="badge-inner-bg" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="rgba(15, 23, 42, 0.95)" />
+                                <stop offset="100%" stop-color="rgba(10, 15, 22, 0.98)" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Badge Container with Glassmorphic Border -->
+                        <rect x="3" y="3" width="42" height="42" rx="12" fill="url(#badge-inner-bg)"
+                            stroke="url(#badge-border-grad)" stroke-width="1.5" class="badge-bg" />
+                        <!-- Cyber Tech Corner Accents -->
+                        <path d="M 8 13 L 8 8 L 13 8" stroke="rgba(56, 189, 248, 0.45)" stroke-width="1.2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M 40 35 L 40 40 L 35 40" stroke="rgba(16, 185, 129, 0.45)" stroke-width="1.2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                        <!-- Subtle Glow Halo Path -->
+                        <path class="s-glow-halo"
+                            d="M 33 15.5 C 30 12, 25.5 12, 21.5 12 C 16.5 12, 13.5 15, 13.5 19 C 13.5 22.8, 16.8 24.8, 21 26 L 27 27.8 C 31.2 29, 34.5 31, 34.5 34.8 C 34.5 38.8, 31.5 41.8, 26.5 41.8 C 22.5 41.8, 17.5 39.5, 14.5 36.5"
+                            stroke="url(#s-gradient-cyan-emerald)" stroke-width="6" stroke-linecap="round"
+                            stroke-linejoin="round" opacity="0.25" />
+                        <!-- Main Futuristic "S" Monogram Vector -->
+                        <path class="s-main-path"
+                            d="M 33 15.5 C 30 12, 25.5 12, 21.5 12 C 16.5 12, 13.5 15, 13.5 19 C 13.5 22.8, 16.8 24.8, 21 26 L 27 27.8 C 31.2 29, 34.5 31, 34.5 34.8 C 34.5 38.8, 31.5 41.8, 26.5 41.8 C 22.5 41.8, 17.5 39.5, 14.5 36.5"
+                            stroke="url(#s-gradient-cyan-emerald)" stroke-width="3.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                        <!-- Cyber Neon Terminal Dots -->
+                        <circle cx="33" cy="15.5" r="2" fill="#38bdf8" class="s-terminal-top" />
+                        <circle cx="14.5" cy="36.5" r="2" fill="#10b981" class="s-terminal-bot" />
+                    </svg>
+                </div>
+            </a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
@@ -30,7 +78,8 @@
                 <li><a href="#contact">Contact</a></li>
             </ul>
             <div class="hamburger" aria-label="Toggle navigation">
-                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <line x1="3" y1="6" x2="21" y2="6"></line>
                     <line x1="3" y1="12" x2="21" y2="12"></line>
                     <line x1="3" y1="18" x2="21" y2="18"></line>
@@ -47,10 +96,12 @@
             </div>
             <h1 class="fade-in">Hi, I'm <span class="highlight">Savindu</span></h1>
             <h2 class="fade-in delay-1">Full-Stack & AI Engineer</h2>
-            <p class="fade-in delay-2">Building scalable, user-centric solutions with machine learning, modern web technologies, and autonomous LLM agents.</p>
+            <p class="fade-in delay-2">Building scalable, user-centric solutions with machine learning, modern web
+                technologies, and autonomous LLM agents.</p>
             <div class="hero-buttons fade-in delay-3">
                 <a href="#projects" class="btn btn-primary">
-                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
                         <polyline points="2 17 12 22 22 17"></polyline>
                         <polyline points="2 12 12 17 22 12"></polyline>
@@ -58,7 +109,8 @@
                     View Projects
                 </a>
                 <a href="#contact" class="btn btn-secondary">
-                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <line x1="22" y1="2" x2="11" y2="13"></line>
                         <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                     </svg>
@@ -67,16 +119,17 @@
             </div>
             <div class="hero-tech-pills fade-in delay-3">
                 <span>
-                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                        <ellipse cx="12" cy="12" rx="10" ry="4.2"></ellipse>
-                        <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(60 12 12)"></ellipse>
-                        <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(120 12 12)"></ellipse>
-                        <circle cx="12" cy="12" r="1.5" fill="currentColor"></circle>
+                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                        <polyline points="2 17 12 22 22 17"></polyline>
+                        <polyline points="2 12 12 17 22 12"></polyline>
                     </svg>
-                    React / Native
+                    Full Stack
                 </span>
                 <span>
-                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <rect x="9" y="2" width="6" height="5" rx="1.5"></rect>
                         <rect x="2" y="17" width="6" height="5" rx="1.5"></rect>
                         <rect x="16" y="17" width="6" height="5" rx="1.5"></rect>
@@ -86,7 +139,8 @@
                     LLM Agents
                 </span>
                 <span>
-                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                         <circle cx="12" cy="12" r="3.5"></circle>
                         <circle cx="12" cy="12" r="1.2" fill="currentColor"></circle>
@@ -101,11 +155,12 @@
             <div id="canvas-3d-container" class="canvas-3d-container">
                 <canvas id="hero-3d-canvas"></canvas>
             </div>
-            
+
             <!-- Interactive Floating Telemetry / HUD Cards -->
             <div class="hud-badge hud-badge-top-right">
                 <div class="hud-icon">
-                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <rect x="4" y="4" width="16" height="16" rx="2"></rect>
                         <rect x="8" y="8" width="8" height="8" rx="1"></rect>
                         <path d="M4 9H1m3 6H1m19-6h3m-3 6h3M9 4V1m6 3V1m-6 19v3m6-3v3"></path>
@@ -119,7 +174,8 @@
 
             <div class="hud-badge hud-badge-bottom-left">
                 <div class="hud-icon">
-                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path d="M12 1a8 8 0 0 0-8 8v1"></path>
                         <path d="M20 9a8 8 0 0 0-3.5-6.6"></path>
                         <path d="M8 9a4 4 0 0 1 8 0v7"></path>
@@ -134,8 +190,20 @@
                 </div>
             </div>
 
+            <!-- Holographic Tech Stack HUD Tooltip -->
+            <div id="tech-tooltip-hud" class="tech-tooltip-hud" aria-live="polite">
+                <div class="tech-tooltip-glow"></div>
+                <div class="tech-tooltip-header">
+                    <span class="tech-tooltip-icon-wrap" id="techTooltipIcon"></span>
+                    <span class="tech-tooltip-title" id="techTooltipTitle">React Native</span>
+                    <span class="tech-tooltip-tag" id="techTooltipTag">Core</span>
+                </div>
+                <div class="tech-tooltip-desc" id="techTooltipDesc">Frontend & Mobile Engineering</div>
+            </div>
+
             <div class="canvas-hint">
-                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="5 9 2 12 5 15"></polyline>
                     <polyline points="9 5 12 2 15 5"></polyline>
                     <polyline points="15 19 12 22 9 19"></polyline>
@@ -143,7 +211,7 @@
                     <line x1="2" y1="12" x2="22" y2="12"></line>
                     <line x1="12" y1="2" x2="12" y2="22"></line>
                 </svg>
-                Move cursor or drag to interact
+                Hover tech stacks or drag 3D mesh to explore
             </div>
         </div>
 
@@ -168,14 +236,16 @@
                         <p class="role">CSE Undergrad @ Uni of Moratuwa</p>
                         <div class="quick-tags">
                             <span>
-                                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M12 21s-7-6.5-7-11.5a7 7 0 1 1 14 0c0 5-7 11.5-7 11.5z"></path>
                                     <circle cx="12" cy="9.5" r="2.5"></circle>
                                 </svg>
                                 Sri Lanka
                             </span>
                             <span>
-                                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                     <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
                                     <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
                                 </svg>
@@ -186,13 +256,19 @@
                 </div>
                 <div class="about-content-right">
                     <div class="about-text">
-                        <p>I am a driven <strong>Computer Science and Engineering undergraduate</strong> at the University of Moratuwa, specializing in full-stack development, mobile engineering, and applied AI.</p>
-                        <p>My passion lies in bridging the gap between cutting-edge AI research and practical applications. I have extensive experience building cross-platform mobile and web apps integrated with machine learning models and computer vision pipelines.</p>
-                        <p>I am always looking for opportunities to apply robust problem-solving skills to innovative technical projects.</p>
+                        <p>I am a driven <strong>Computer Science and Engineering undergraduate</strong> at the
+                            University of Moratuwa, specializing in full-stack development, mobile engineering, and
+                            applied AI.</p>
+                        <p>My passion lies in bridging the gap between cutting-edge AI research and practical
+                            applications. I have extensive experience building cross-platform mobile and web apps
+                            integrated with machine learning models and computer vision pipelines.</p>
+                        <p>I am always looking for opportunities to apply robust problem-solving skills to innovative
+                            technical projects.</p>
                     </div>
                     <div class="about-stats">
                         <div class="stat-box">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="16 18 22 12 16 6"></polyline>
                                 <polyline points="8 6 2 12 8 18"></polyline>
                                 <line x1="14" y1="4" x2="10" y2="20"></line>
@@ -201,10 +277,14 @@
                             <p>MERN, React Native</p>
                         </div>
                         <div class="stat-box">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9.5 2A4.5 4.5 0 0 0 5 6.5C5 7.1 5.1 7.7 5.4 8.2A4.5 4.5 0 0 0 4 12c0 1.6.8 3 2.1 3.8A4.5 4.5 0 0 0 9.5 22c1.4 0 2.7-.6 3.5-1.6.8 1 2.1 1.6 3.5 1.6a4.5 4.5 0 0 0 3.4-6.2c1.3-.8 2.1-2.2 2.1-3.8a4.5 4.5 0 0 0-1.4-3.8c.3-.5.4-1.1.4-1.7A4.5 4.5 0 0 0 14.5 2c-1.3 0-2.4.6-3.2 1.5A4.5 4.5 0 0 0 9.5 2z"></path>
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M9.5 2A4.5 4.5 0 0 0 5 6.5C5 7.1 5.1 7.7 5.4 8.2A4.5 4.5 0 0 0 4 12c0 1.6.8 3 2.1 3.8A4.5 4.5 0 0 0 9.5 22c1.4 0 2.7-.6 3.5-1.6.8 1 2.1 1.6 3.5 1.6a4.5 4.5 0 0 0 3.4-6.2c1.3-.8 2.1-2.2 2.1-3.8a4.5 4.5 0 0 0-1.4-3.8c.3-.5.4-1.1.4-1.7A4.5 4.5 0 0 0 14.5 2c-1.3 0-2.4.6-3.2 1.5A4.5 4.5 0 0 0 9.5 2z">
+                                </path>
                                 <path d="M12 4v16"></path>
-                                <path d="M12 9a3 3 0 0 0-3-3m3 8a3 3 0 0 0-3-3m6-2a3 3 0 0 0-3 3m3 3a3 3 0 0 0-3-3"></path>
+                                <path d="M12 9a3 3 0 0 0-3-3m3 8a3 3 0 0 0-3-3m6-2a3 3 0 0 0-3 3m3 3a3 3 0 0 0-3-3">
+                                </path>
                             </svg>
                             <h3>Applied AI</h3>
                             <p>LLM Agents, Computer Vision</p>
@@ -221,11 +301,12 @@
             <div class="section-header-wrap">
                 <span class="section-subtitle">Core Competencies & Stack</span>
                 <h2 class="section-title">Technical Skills</h2>
-                <p class="section-intro">Specialized tools, languages, and frameworks powering intelligent, scalable software solutions.</p>
+                <p class="section-intro">Specialized tools, languages, and frameworks powering intelligent, scalable
+                    software solutions.</p>
             </div>
 
             <div class="bento-skills-grid">
-                
+
                 <!-- 1. Flagship Bento Card: AI & Machine Learning Systems (7 cols) -->
                 <div class="bento-skill-card skill-card-ai-flagship">
                     <div class="bento-floating-badge badge-top-right">
@@ -235,21 +316,27 @@
 
                     <div class="skill-card-header">
                         <div class="skill-icon-wrap ai-icon-glow">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9.5 2A4.5 4.5 0 0 0 5 6.5C5 7.1 5.1 7.7 5.4 8.2A4.5 4.5 0 0 0 4 12c0 1.6.8 3 2.1 3.8A4.5 4.5 0 0 0 9.5 22c1.4 0 2.7-.6 3.5-1.6.8 1 2.1 1.6 3.5 1.6a4.5 4.5 0 0 0 3.4-6.2c1.3-.8 2.1-2.2 2.1-3.8a4.5 4.5 0 0 0-1.4-3.8c.3-.5.4-1.1.4-1.7A4.5 4.5 0 0 0 14.5 2c-1.3 0-2.4.6-3.2 1.5A4.5 4.5 0 0 0 9.5 2z"></path>
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M9.5 2A4.5 4.5 0 0 0 5 6.5C5 7.1 5.1 7.7 5.4 8.2A4.5 4.5 0 0 0 4 12c0 1.6.8 3 2.1 3.8A4.5 4.5 0 0 0 9.5 22c1.4 0 2.7-.6 3.5-1.6.8 1 2.1 1.6 3.5 1.6a4.5 4.5 0 0 0 3.4-6.2c1.3-.8 2.1-2.2 2.1-3.8a4.5 4.5 0 0 0-1.4-3.8c.3-.5.4-1.1.4-1.7A4.5 4.5 0 0 0 14.5 2c-1.3 0-2.4.6-3.2 1.5A4.5 4.5 0 0 0 9.5 2z">
+                                </path>
                                 <path d="M12 4v16"></path>
-                                <path d="M12 9a3 3 0 0 0-3-3m3 8a3 3 0 0 0-3-3m6-2a3 3 0 0 0-3 3m3 3a3 3 0 0 0-3-3"></path>
+                                <path d="M12 9a3 3 0 0 0-3-3m3 8a3 3 0 0 0-3-3m6-2a3 3 0 0 0-3 3m3 3a3 3 0 0 0-3-3">
+                                </path>
                             </svg>
                         </div>
                         <div>
                             <h3>AI & Neural Systems</h3>
-                            <p class="skill-category-desc">Applied AI research, on-device vision, and autonomous agent orchestration.</p>
+                            <p class="skill-category-desc">Applied AI research, on-device vision, and autonomous agent
+                                orchestration.</p>
                         </div>
                     </div>
 
                     <div class="skill-chips-cloud">
                         <div class="skill-chip active-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="9" y="2" width="6" height="5" rx="1.5"></rect>
                                 <rect x="2" y="17" width="6" height="5" rx="1.5"></rect>
                                 <rect x="16" y="17" width="6" height="5" rx="1.5"></rect>
@@ -258,7 +345,8 @@
                             <span>LangGraph (Agents)</span>
                         </div>
                         <div class="skill-chip active-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
                                 <path d="M2 12h20"></path>
@@ -266,29 +354,35 @@
                             <span>ChromaDB Vector Store</span>
                         </div>
                         <div class="skill-chip active-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                 <circle cx="12" cy="12" r="3.5"></circle>
                             </svg>
                             <span>MediaPipe Pose</span>
                         </div>
                         <div class="skill-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
                                 <polyline points="2 17 12 22 22 17"></polyline>
                             </svg>
                             <span>TensorFlow.js</span>
                         </div>
                         <div class="skill-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M12 3c7.2 0 9 1.8 9 9s-1.8 9-9 9-9-1.8-9-9 1.8-9 9-9z"></path>
                                 <path d="M9 12l2 2 4-4"></path>
                             </svg>
                             <span>RAG Architectures</span>
                         </div>
                         <div class="skill-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83"></path>
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83">
+                                </path>
                             </svg>
                             <span>Google GenAI / LLMs</span>
                         </div>
@@ -313,7 +407,8 @@
                 <!-- 2. Web & Mobile Engineering (5 cols) -->
                 <div class="bento-skill-card skill-card-mobile">
                     <div class="bento-floating-badge badge-top-left">
-                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
                             <line x1="12" y1="18" x2="12.01" y2="18"></line>
                         </svg>
@@ -322,7 +417,8 @@
 
                     <div class="skill-card-header">
                         <div class="skill-icon-wrap mobile-icon-glow">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="16 18 22 12 16 6"></polyline>
                                 <polyline points="8 6 2 12 8 18"></polyline>
                                 <line x1="14" y1="4" x2="10" y2="20"></line>
@@ -330,13 +426,15 @@
                         </div>
                         <div>
                             <h3>Web & Mobile Apps</h3>
-                            <p class="skill-category-desc">Responsive UI/UX, state management, and mobile cross-compilation.</p>
+                            <p class="skill-category-desc">Responsive UI/UX, state management, and mobile
+                                cross-compilation.</p>
                         </div>
                     </div>
 
                     <div class="skill-chips-cloud">
                         <div class="skill-chip active-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                                 <ellipse cx="12" cy="12" rx="10" ry="4.2"></ellipse>
                                 <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(60 12 12)"></ellipse>
                                 <ellipse cx="12" cy="12" rx="10" ry="4.2" transform="rotate(120 12 12)"></ellipse>
@@ -345,7 +443,8 @@
                             <span>React Native</span>
                         </div>
                         <div class="skill-chip active-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <circle cx="12" cy="12" r="10"></circle>
                                 <line x1="12" y1="8" x2="12" y2="12"></line>
                                 <line x1="12" y1="16" x2="12.01" y2="16"></line>
@@ -353,28 +452,33 @@
                             <span>React.js</span>
                         </div>
                         <div class="skill-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
                             </svg>
                             <span>Node.js / Express</span>
                         </div>
                         <div class="skill-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M16 16v1a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path>
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 16v1a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1">
+                                </path>
                                 <polyline points="10 9 15 4 20 9"></polyline>
                                 <line x1="15" y1="4" x2="15" y2="16"></line>
                             </svg>
                             <span>Capacitor</span>
                         </div>
                         <div class="skill-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
                                 <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
                             </svg>
                             <span>RESTful APIs</span>
                         </div>
                         <div class="skill-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
                             </svg>
                             <span>Tailwind & CSS3</span>
@@ -385,7 +489,8 @@
                 <!-- 3. Databases & DevOps (5 cols) -->
                 <div class="bento-skill-card skill-card-devops">
                     <div class="bento-floating-badge badge-top-left">
-                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
                             <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
                             <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
@@ -395,7 +500,8 @@
 
                     <div class="skill-card-header">
                         <div class="skill-icon-wrap devops-icon-glow">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="4" y="4" width="16" height="16" rx="2"></rect>
                                 <rect x="8" y="8" width="8" height="8" rx="1"></rect>
                                 <path d="M4 9H1m3 6H1m19-6h3m-3 6h3M9 4V1m6 3V1m-6 19v3m6-3v3"></path>
@@ -403,13 +509,15 @@
                         </div>
                         <div>
                             <h3>Databases & DevOps</h3>
-                            <p class="skill-category-desc">Resilient data stores, containerization, and API verification pipelines.</p>
+                            <p class="skill-category-desc">Resilient data stores, containerization, and API verification
+                                pipelines.</p>
                         </div>
                     </div>
 
                     <div class="skill-chips-cloud">
                         <div class="skill-chip active-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
                                 <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
                                 <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
@@ -417,31 +525,38 @@
                             <span>PostgreSQL</span>
                         </div>
                         <div class="skill-chip active-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
                             </svg>
                             <span>MongoDB</span>
                         </div>
                         <div class="skill-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
                             </svg>
                             <span>Docker Container</span>
                         </div>
                         <div class="skill-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                </path>
                             </svg>
                             <span>Git & GitHub</span>
                         </div>
                         <div class="skill-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <polygon points="12 2 19 21 12 17 5 21 12 2"></polygon>
                             </svg>
                             <span>Postman</span>
                         </div>
                         <div class="skill-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
                                 <path d="M3 5v7c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
                             </svg>
@@ -453,7 +568,8 @@
                 <!-- 4. Languages & Core Architecture (7 cols) -->
                 <div class="bento-skill-card skill-card-languages">
                     <div class="bento-floating-badge badge-top-right">
-                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <polyline points="16 18 22 12 16 6"></polyline>
                             <polyline points="8 6 2 12 8 18"></polyline>
                         </svg>
@@ -462,27 +578,31 @@
 
                     <div class="skill-card-header">
                         <div class="skill-icon-wrap lang-icon-glow">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <polyline points="4 17 10 11 4 5"></polyline>
                                 <line x1="12" y1="19" x2="20" y2="19"></line>
                             </svg>
                         </div>
                         <div>
                             <h3>Languages & System Architecture</h3>
-                            <p class="skill-category-desc">Core programming languages, algorithmic problem solving, and microservices design.</p>
+                            <p class="skill-category-desc">Core programming languages, algorithmic problem solving, and
+                                microservices design.</p>
                         </div>
                     </div>
 
                     <div class="skill-chips-cloud">
                         <div class="skill-chip active-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
                                 <path d="M2 17l10 5 10-5"></path>
                             </svg>
                             <span>Python</span>
                         </div>
                         <div class="skill-chip active-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="3" y="3" width="18" height="18" rx="4"></rect>
                                 <path d="M8 12h8"></path>
                                 <path d="M12 8v8"></path>
@@ -490,28 +610,32 @@
                             <span>C++</span>
                         </div>
                         <div class="skill-chip active-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M16 18l6-6-6-6"></path>
                                 <path d="M8 6l-6 6 6 6"></path>
                             </svg>
                             <span>JavaScript (ES6+)</span>
                         </div>
                         <div class="skill-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="3" y="3" width="18" height="18" rx="4"></rect>
                                 <path d="M8 8h8m-4 0v8"></path>
                             </svg>
                             <span>TypeScript</span>
                         </div>
                         <div class="skill-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
                                 <polyline points="2 12 12 17 22 12"></polyline>
                             </svg>
                             <span>Data Structures & Algorithms</span>
                         </div>
                         <div class="skill-chip">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <rect x="3" y="3" width="7" height="7"></rect>
                                 <rect x="14" y="3" width="7" height="7"></rect>
                                 <rect x="14" y="14" width="7" height="7"></rect>
@@ -532,11 +656,12 @@
             <div class="section-header-wrap">
                 <span class="section-subtitle">Selected Engineering Works</span>
                 <h2 class="section-title">Featured Projects</h2>
-                <p class="section-intro">Bridging cutting-edge machine learning and applied AI with resilient full-stack architectures.</p>
+                <p class="section-intro">Bridging cutting-edge machine learning and applied AI with resilient full-stack
+                    architectures.</p>
             </div>
 
             <div class="bento-project-grid">
-                
+
                 <!-- 1. Primary Flagship Bento Card (7 cols) - Smart Attendance -->
                 <div class="bento-card bento-card-featured-left">
                     <!-- Overlapping Floating Status Pill -->
@@ -552,23 +677,9 @@
                                 <span class="project-tag-pill">2026 Production</span>
                             </div>
                             <h3>Smart Attendance Platform</h3>
-                            <p>An enterprise-grade cross-platform mobile ecosystem and live administrative dashboard. Engineered with dual-layer face recognition and GPS geofencing verification over a resilient microservices backend.</p>
-                            
-                            <div class="project-metrics-grid">
-                                <div class="metric-item">
-                                    <span class="metric-val">&lt; 250ms</span>
-                                    <span class="metric-lbl">Auth Latency</span>
-                                </div>
-                                <div class="metric-item">
-                                    <span class="metric-val">99.4%</span>
-                                    <span class="metric-lbl">Face Match</span>
-                                </div>
-                                <div class="metric-item">
-                                    <span class="metric-val">15k+</span>
-                                    <span class="metric-lbl">Daily Events</span>
-                                </div>
-                            </div>
-
+                            <p>An enterprise-grade cross-platform mobile ecosystem and live administrative dashboard.
+                                Engineered with dual-layer face recognition and GPS geofencing verification over a
+                                resilient microservices backend.</p>
                             <div class="project-tech">
                                 <span>React Native</span>
                                 <span>Node.js / Express</span>
@@ -578,9 +689,13 @@
                             </div>
 
                             <div class="project-links">
-                                <a href="https://github.com/SmartAttendancePlatform-CS3202" target="_blank" rel="noopener noreferrer" class="btn-project-primary">
-                                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                <a href="https://github.com/SmartAttendancePlatform-CS3202" target="_blank"
+                                    rel="noopener noreferrer" class="btn-project-primary">
+                                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                        </path>
                                     </svg>
                                     View Organization / Repository
                                 </a>
@@ -606,7 +721,8 @@
                                 <!-- Overlapping Live Scanner Badge -->
                                 <div class="overlapping-scanner-badge">
                                     <div class="scanner-radar">
-                                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <path d="M12 1a8 8 0 0 0-8 8v1"></path>
                                             <path d="M8 9a4 4 0 0 1 8 0v7"></path>
                                             <path d="M12 12a1 1 0 0 1 1 1v5a1 1 0 0 1-2 0v-5a1 1 0 0 1 1-1z"></path>
@@ -626,7 +742,8 @@
                 <div class="bento-card bento-card-tall-right">
                     <!-- Overlapping Floating Pose Pill -->
                     <div class="bento-floating-badge badge-top-left">
-                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"></circle>
                             <polyline points="9 12 11 14 15 10"></polyline>
                         </svg>
@@ -639,8 +756,9 @@
                                 <span class="project-tag-pill">Mobile AI & Productivity</span>
                             </div>
                             <h3>FitLock <span class="bento-subtitle">(AI App-Locker)</span></h3>
-                            <p>Locks distracting social applications until physical workouts are performed. Uses on-device MediaPipe Pose estimation to count exercise reps with zero cloud latency.</p>
-                            
+                            <p>Locks distracting social applications until physical workouts are performed. Uses
+                                on-device MediaPipe Pose estimation to count exercise reps with zero cloud latency.</p>
+
                             <!-- Overlapping Workout Tracker Visual -->
                             <div class="fitlock-preview-card">
                                 <div class="fitlock-stat-row">
@@ -666,8 +784,10 @@
                             </div>
 
                             <div class="project-links">
-                                <a href="https://play.google.com/store/apps/details?id=com.savindu.fitlock" target="_blank" rel="noopener noreferrer">
-                                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <a href="https://play.google.com/store/apps/details?id=com.savindu.fitlock"
+                                    target="_blank" rel="noopener noreferrer">
+                                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <polygon points="5 3 19 12 5 21 5 3"></polygon>
                                         <line x1="5" y1="3" x2="14" y2="15.5"></line>
                                         <line x1="5" y1="21" x2="14" y2="8.5"></line>
@@ -693,8 +813,9 @@
                                 <span class="project-tag-pill">Autonomous LLM Agent</span>
                             </div>
                             <h3>HackerRank AI Support Agent</h3>
-                            <p>Terminal-driven autonomous support engineer automating enterprise ticket triage, query deduplication, and code debugging via deterministic state graphs.</p>
-                            
+                            <p>Terminal-driven autonomous support engineer automating enterprise ticket triage, query
+                                deduplication, and code debugging via deterministic state graphs.</p>
+
                             <!-- Overlapping State Machine Terminal Window -->
                             <div class="langgraph-terminal-window">
                                 <div class="term-bar">
@@ -704,10 +825,14 @@
                                     <span class="term-title">LangGraph Agent State Machine</span>
                                 </div>
                                 <div class="term-content">
-                                    <div class="term-line"><span class="t-prompt">$</span> langgraph run triage_agent</div>
-                                    <div class="term-line success"><span class="t-node">[Ingest]</span> Vector search: ChromaDB Top-5 matches</div>
-                                    <div class="term-line info"><span class="t-node">[Decision]</span> Deterministic Router: Severity Critical</div>
-                                    <div class="term-line final"><span class="t-node">[Resolved]</span> Ticket Auto-Triaged in 480ms</div>
+                                    <div class="term-line"><span class="t-prompt">$</span> langgraph run triage_agent
+                                    </div>
+                                    <div class="term-line success"><span class="t-node">[Ingest]</span> Vector search:
+                                        ChromaDB Top-5 matches</div>
+                                    <div class="term-line info"><span class="t-node">[Decision]</span> Deterministic
+                                        Router: Severity Critical</div>
+                                    <div class="term-line final"><span class="t-node">[Resolved]</span> Ticket
+                                        Auto-Triaged in 480ms</div>
                                 </div>
                             </div>
 
@@ -719,9 +844,13 @@
                             </div>
 
                             <div class="project-links">
-                                <a href="https://github.com/savindu-st/hackerrank_orchestrate" target="_blank" rel="noopener noreferrer">
-                                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                <a href="https://github.com/savindu-st/hackerrank_orchestrate" target="_blank"
+                                    rel="noopener noreferrer">
+                                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                        </path>
                                     </svg>
                                     View Repository
                                 </a>
@@ -735,7 +864,8 @@
                     <!-- Overlapping Floating Pipeline Badge -->
                     <div class="bento-floating-badge badge-top-right">
                         <span class="pulse-dot"></span>
-                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                             <circle cx="12" cy="12" r="3.5"></circle>
                         </svg>
@@ -751,8 +881,12 @@
                                 <span class="project-tag-pill">Docker Containerized</span>
                             </div>
                             <h3>PrajaNavigator <span class="bento-subtitle">(AI Insight Platform)</span></h3>
-                            <p>Engineered an enterprise-grade Retrieval-Augmented Generation (RAG) system integrated with computer vision pipelines to ingest and analyze complex tabular, statistical, and document datasets. Delivers actionable intelligence through specialized user and administrative dashboards with a Python backend and containerized Docker Compose deployment.</p>
-                            
+                            <p>Engineered an enterprise-grade Retrieval-Augmented Generation (RAG) system integrated
+                                with computer vision pipelines to ingest and analyze complex tabular, statistical, and
+                                document datasets. Delivers actionable intelligence through specialized user and
+                                administrative dashboards with a Python backend and containerized Docker Compose
+                                deployment.</p>
+
                             <div class="project-metrics-grid">
                                 <div class="metric-item">
                                     <span class="metric-val">&lt; 350ms</span>
@@ -771,7 +905,8 @@
                             <div class="rag-pipeline-container">
                                 <div class="rag-pipeline-header">
                                     <span class="pipeline-title">
-                                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                             <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
                                         </svg>
                                         Citizen Service AI Execution Flow (5-Step Pipeline)
@@ -838,7 +973,8 @@
                                         <span class="dot yellow"></span>
                                         <span class="dot green"></span>
                                         <span class="preview-title">praja-navigator-pipeline.py</span>
-                                        <span class="live-status-pill"><span class="pulse-dot"></span> 5-Step Pipeline Active</span>
+                                        <span class="live-status-pill"><span class="pulse-dot"></span> 5-Step Pipeline
+                                            Active</span>
                                     </div>
                                     <div class="preview-code-block">
                                         <code><span class="c-kw">async def</span> <span class="c-fn">execute_citizen_workflow</span>(user_query, uploaded_docs):</code>
@@ -851,7 +987,8 @@
                                     <!-- Overlapping Live Insight Status Badge -->
                                     <div class="overlapping-insight-badge">
                                         <div class="insight-icon">
-                                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                                 <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
                                                 <polyline points="2 17 12 22 22 17"></polyline>
                                                 <polyline points="2 12 12 17 22 12"></polyline>
@@ -876,9 +1013,13 @@
                             </div>
 
                             <div class="project-links">
-                                <a href="https://github.com/savindu-st/AGENTRIX26-TEAM21-QuadNova" target="_blank" rel="noopener noreferrer" class="btn-project-primary">
-                                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                                <a href="https://github.com/savindu-st/AGENTRIX26-TEAM21-QuadNova" target="_blank"
+                                    rel="noopener noreferrer" class="btn-project-primary">
+                                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                        </path>
                                     </svg>
                                     View Repository (AGENTRIX26 QuadNova)
                                 </a>
@@ -900,7 +1041,8 @@
                 <div class="edu-card">
                     <div class="edu-header">
                         <div class="edu-icon-wrap">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
                                 <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
                             </svg>
@@ -917,8 +1059,8 @@
                         <div class="timeline-item">
                             <div class="timeline-dot"></div>
                             <h4>GCE Advanced Level</h4>
-                            <p class="timeline-place">Dharmapala College</p>
-                            <span class="timeline-date">2023 | 3 As (Z-Score: 2.12)</span>
+                            <p class="timeline-place">Dharmapala College Bandarawela</p>
+                            <span class="timeline-date">2022 | 3 As (Z-Score: 2.12)</span>
                         </div>
                     </div>
                 </div>
@@ -927,7 +1069,8 @@
                 <div class="edu-card">
                     <div class="edu-header">
                         <div class="edu-icon-wrap">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
                                 <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
                                 <circle cx="9" cy="7" r="4"></circle>
                                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -975,33 +1118,45 @@
     <section id="contact" class="contact section-padding">
         <div class="container">
             <h2 class="section-title">Get In Touch</h2>
-            <p class="contact-desc">I'm currently seeking a software engineering internship to apply my problem-solving skills to innovative projects. Feel free to reach out!</p>
-            
+            <p class="contact-desc">I'm currently seeking a software engineering internship to apply my problem-solving
+                skills to innovative projects. Feel free to reach out!</p>
+
             <div class="contact-grid">
                 <div class="contact-info">
                     <div class="info-item">
-                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z">
+                            </path>
                             <polyline points="22,6 12,13 2,6"></polyline>
                         </svg>
                         <a href="mailto:savindus.23@cse.mrt.ac.lk">savindus.23@cse.mrt.ac.lk</a>
                     </div>
                     <div class="info-item social-links">
-                        <a href="https://www.linkedin.com/in/savindu-suranjith-ab6930273/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <a href="https://www.linkedin.com/in/savindu-suranjith-ab6930273/" target="_blank"
+                            rel="noopener noreferrer" aria-label="LinkedIn">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z">
+                                </path>
                                 <rect x="2" y="9" width="4" height="12"></rect>
                                 <circle cx="4" cy="4" r="2"></circle>
                             </svg>
                         </a>
-                        <a href="https://github.com/savindu-st" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        <a href="https://github.com/savindu-st" target="_blank" rel="noopener noreferrer"
+                            aria-label="GitHub">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                </path>
                             </svg>
                         </a>
                     </div>
                     <a href="CV V2 (2).pdf" class="btn btn-primary download-btn" download>
-                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <line x1="12" y1="15" x2="12" y2="3"></line>
@@ -1010,22 +1165,44 @@
                     </a>
                 </div>
 
-                <!-- Functional Contact Form (Requires a backend or service like Formspree in prod) -->
-                <form class="contact-form" action="#" method="POST" id="contactForm">
-                    <div class="form-group">
-                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <!-- Functional Contact Form (Powered by Web3Forms) -->
+                <form class="contact-form" action="https://api.web3forms.com/submit" method="POST" id="contactForm" novalidate>
+                    <!-- Web3Forms Access Key: Get free key instantly at https://web3forms.com -->
+                    <input type="hidden" name="access_key" id="accessKey" value="YOUR_ACCESS_KEY_HERE">
+                    <input type="hidden" name="from_name" value="Savindu Portfolio Contact Form">
+                    <!-- Honeypot Anti-Spam (Invisible to users, traps automated spam bots) -->
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                    <div class="form-group" id="group-name">
+                        <label for="name" class="visually-hidden">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required autocomplete="name">
+                        <span class="field-error" id="nameError"></span>
                     </div>
-                    <div class="form-group">
-                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    <div class="form-group" id="group-email">
+                        <label for="email" class="visually-hidden">Your Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required autocomplete="email">
+                        <span class="field-error" id="emailError"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="group-subject">
+                        <label for="subject" class="visually-hidden">Subject</label>
                         <input type="text" id="subject" name="subject" placeholder="Subject" required>
+                        <span class="field-error" id="subjectError"></span>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" id="group-message">
+                        <label for="message" class="visually-hidden">Your Message</label>
                         <textarea id="message" name="message" rows="5" placeholder="Your Message" required></textarea>
+                        <span class="field-error" id="messageError"></span>
                     </div>
-                    <button type="submit" class="btn btn-secondary">Send Message</button>
-                    <p class="form-status" id="formStatus"></p>
+                    <button type="submit" class="btn btn-secondary" id="submitBtn">
+                        <span class="btn-icon" id="btnIcon">
+                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="22" y1="2" x2="11" y2="13"></line>
+                                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                            </svg>
+                        </span>
+                        <span class="btn-text" id="btnText">Send Message</span>
+                    </button>
+                    <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
                 </form>
             </div>
         </div>
@@ -1039,4 +1216,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>

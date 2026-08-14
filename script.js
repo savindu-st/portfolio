@@ -105,39 +105,147 @@ document.addEventListener('DOMContentLoaded', () => {
         initialElements.forEach(el => el.classList.add('visible'));
     }, 100);
 
-    // Contact Form Submission (Mock)
+    // Functional Contact Form Submission with Web3Forms & Real-time Validation
     const contactForm = document.getElementById('contactForm');
     const formStatus = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('submitBtn');
+    const btnIcon = document.getElementById('btnIcon');
+    const btnText = document.getElementById('btnText');
 
-    if(contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+    if (contactForm) {
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const subjectInput = document.getElementById('subject');
+        const messageInput = document.getElementById('message');
+
+        const inputs = [
+            { el: nameInput, group: document.getElementById('group-name'), err: document.getElementById('nameError'), validate: (val) => val.trim().length >= 2 ? '' : 'Please enter your name (at least 2 characters).' },
+            { el: emailInput, group: document.getElementById('group-email'), err: document.getElementById('emailError'), validate: (val) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim()) ? '' : 'Please enter a valid email address.' },
+            { el: subjectInput, group: document.getElementById('group-subject'), err: document.getElementById('subjectError'), validate: (val) => val.trim().length >= 2 ? '' : 'Please enter a subject.' },
+            { el: messageInput, group: document.getElementById('group-message'), err: document.getElementById('messageError'), validate: (val) => val.trim().length >= 8 ? '' : 'Message must be at least 8 characters long.' }
+        ];
+
+        // Clear error on input typing
+        inputs.forEach(({ el, group, err }) => {
+            if (el) {
+                el.addEventListener('input', () => {
+                    group.classList.remove('has-error');
+                    if (err) err.textContent = '';
+                });
+            }
+        });
+
+        // Form Submit Handler
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
-            // Basic validation check
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const message = document.getElementById('message').value;
 
-            if(name && email && message) {
-                // Simulate sending data
-                const submitBtn = contactForm.querySelector('button[type="submit"]');
-                const originalText = submitBtn.innerText;
-                
-                submitBtn.innerText = 'Sending...';
-                submitBtn.disabled = true;
+            // Clear existing status
+            formStatus.className = 'form-status';
+            formStatus.innerHTML = '';
 
-                setTimeout(() => {
-                    contactForm.reset();
-                    submitBtn.innerText = originalText;
-                    submitBtn.disabled = false;
-                    formStatus.style.color = 'var(--accent-secondary)';
-                    formStatus.innerText = 'Thank you! Your message has been sent successfully.';
+            // Run client validations
+            let hasErrors = false;
+            inputs.forEach(({ el, group, err, validate }) => {
+                if (el) {
+                    const errorMsg = validate(el.value);
+                    if (errorMsg) {
+                        group.classList.add('has-error');
+                        if (err) err.textContent = errorMsg;
+                        hasErrors = true;
+                    } else {
+                        group.classList.remove('has-error');
+                        if (err) err.textContent = '';
+                    }
+                }
+            });
+
+            if (hasErrors) {
+                const firstInvalid = contactForm.querySelector('.form-group.has-error input, .form-group.has-error textarea');
+                if (firstInvalid) firstInvalid.focus();
+                return;
+            }
+
+            // Extract Access Key
+            const accessKeyInput = document.getElementById('accessKey');
+            const accessKey = accessKeyInput ? accessKeyInput.value.trim() : '';
+
+            // Prepare Payload
+            const formData = new FormData(contactForm);
+            const payload = Object.fromEntries(formData.entries());
+
+            // UI: Loading State
+            submitBtn.disabled = true;
+            const originalIconHTML = btnIcon ? btnIcon.innerHTML : '';
+            const originalText = btnText ? btnText.textContent : 'Send Message';
+
+            if (btnIcon) {
+                btnIcon.innerHTML = `<svg class="svg-icon spinner-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" stroke-dasharray="32" stroke-dashoffset="12"></circle></svg>`;
+            }
+            if (btnText) btnText.textContent = 'Sending...';
+
+            try {
+                // If user has not yet replaced the demo key, inform them cleanly with a fallback
+                if (!accessKey || accessKey === 'YOUR_ACCESS_KEY_HERE') {
+                    await new Promise(r => setTimeout(r, 600)); // Smooth brief visual feedback
                     
-                    // Clear status message after 5 seconds
+                    formStatus.className = 'form-status info';
+                    formStatus.innerHTML = `
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                        <div>
+                            <strong>Nearly Ready!</strong> Please add your free Web3Forms access key in <code>index.html</code>, or click to email directly: 
+                            <a href="mailto:savindus.23@cse.mrt.ac.lk?subject=${encodeURIComponent(payload.subject || 'Portfolio Inquiry')}&body=${encodeURIComponent(`Hi Savindu,\n\n${payload.message || ''}\n\nFrom: ${payload.name || ''} (${payload.email || ''})`)}">savindus.23@cse.mrt.ac.lk</a>.
+                        </div>
+                    `;
+                    return;
+                }
+
+                // Live API Dispatch to Web3Forms
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await response.json();
+
+                if (response.status === 200 && data.success) {
+                    // Success feedback
+                    formStatus.className = 'form-status success';
+                    formStatus.innerHTML = `
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        <div>
+                            <strong>Message Sent!</strong> Thank you, ${payload.name}. Your message has been delivered to my inbox. I'll get back to you soon.
+                        </div>
+                    `;
+                    contactForm.reset();
+
+                    // Automatically clear success banner after 8 seconds
                     setTimeout(() => {
-                        formStatus.innerText = '';
-                    }, 5000);
-                }, 1500);
+                        formStatus.innerHTML = '';
+                        formStatus.className = 'form-status';
+                    }, 8000);
+                } else {
+                    // Service error
+                    throw new Error(data.message || 'Submission failed. Please check your details.');
+                }
+
+            } catch (error) {
+                console.error('Contact Form Error:', error);
+                formStatus.className = 'form-status error';
+                formStatus.innerHTML = `
+                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    <div>
+                        <strong>Unable to send:</strong> ${error.message || 'An error occurred.'} You can reach me directly at <a href="mailto:savindus.23@cse.mrt.ac.lk?subject=${encodeURIComponent(payload.subject || 'Portfolio Inquiry')}">savindus.23@cse.mrt.ac.lk</a>.
+                    </div>
+                `;
+            } finally {
+                // Restore button state
+                submitBtn.disabled = false;
+                if (btnIcon) btnIcon.innerHTML = originalIconHTML;
+                if (btnText) btnText.textContent = originalText;
             }
         });
     }
@@ -148,7 +256,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* =========================================================================
    Interactive 3D Hero Canvas (Three.js)
-   AI Neural Structural Mesh, Quantum Particle Field & Cursor Physics
+   AI Neural Structural Mesh, Orbiting Tech Stack Badges & Holographic HUD
    ========================================================================= */
 function initHero3DCanvas() {
     const canvas = document.getElementById('hero-3d-canvas');
@@ -191,7 +299,7 @@ function initHero3DCanvas() {
         color: 0x0ea5e9, // Cyan
         wireframe: true,
         transparent: true,
-        opacity: 0.4,
+        opacity: 0.38,
         roughness: 0.2,
         metalness: 0.8
     });
@@ -225,7 +333,7 @@ function initHero3DCanvas() {
     const innerMesh = new THREE.Mesh(innerGeo, innerMaterial);
     coreGroup.add(innerMesh);
 
-    // Inner Crystalline Core (Solid transluscent)
+    // Inner Crystalline Core (Solid translucent)
     const crystalGeo = new THREE.OctahedronGeometry(0.65, 0);
     const crystalMat = new THREE.MeshPhysicalMaterial({
         color: 0x0ea5e9,
@@ -233,14 +341,13 @@ function initHero3DCanvas() {
         opacity: 0.5,
         roughness: 0.1,
         metalness: 0.1,
-        transmission: 0.8,
-        thickness: 1.2
+        transmission: 0.8
     });
     const crystalMesh = new THREE.Mesh(crystalGeo, crystalMat);
     coreGroup.add(crystalMesh);
 
     // 4. Gyroscopic Cyber Orbital Rings
-    const ring1Geo = new THREE.TorusGeometry(2.45, 0.015, 16, 100);
+    const ring1Geo = new THREE.TorusGeometry(2.55, 0.015, 16, 100);
     const ring1Mat = new THREE.MeshBasicMaterial({
         color: 0x0ea5e9,
         transparent: true,
@@ -251,7 +358,7 @@ function initHero3DCanvas() {
     ring1.rotation.y = Math.PI / 6;
     masterGroup.add(ring1);
 
-    const ring2Geo = new THREE.TorusGeometry(2.7, 0.015, 16, 100);
+    const ring2Geo = new THREE.TorusGeometry(2.95, 0.015, 16, 100);
     const ring2Mat = new THREE.MeshBasicMaterial({
         color: 0x10b981,
         transparent: true,
@@ -263,7 +370,7 @@ function initHero3DCanvas() {
     masterGroup.add(ring2);
 
     // Satellites orbiting on the rings
-    const satGeo = new THREE.SphereGeometry(0.06, 12, 12);
+    const satGeo = new THREE.SphereGeometry(0.055, 12, 12);
     const satMat1 = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
     const sat1 = new THREE.Mesh(satGeo, satMat1);
     masterGroup.add(sat1);
@@ -273,14 +380,13 @@ function initHero3DCanvas() {
     masterGroup.add(sat2);
 
     // 5. Quantum Data Particle Swarm
-    const particleCount = 550;
+    const particleCount = 520;
     const particlePositions = new Float32Array(particleCount * 3);
     const particleOrigins = new Float32Array(particleCount * 3);
     const particleSpeeds = new Float32Array(particleCount);
     const particlePhases = new Float32Array(particleCount);
 
     for (let i = 0; i < particleCount; i++) {
-        // Spherical distribution around center
         const radius = 2.2 + Math.random() * 2.8;
         const theta = Math.random() * Math.PI * 2;
         const phi = Math.acos((Math.random() * 2) - 1);
@@ -316,7 +422,7 @@ function initHero3DCanvas() {
     masterGroup.add(particleSystem);
 
     // 6. Dynamic Colored Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.7);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.75);
     scene.add(ambientLight);
 
     const cyanLight = new THREE.PointLight(0x0ea5e9, 3.5, 30);
@@ -331,8 +437,443 @@ function initHero3DCanvas() {
     purpleLight.position.set(0, 5, -4);
     scene.add(purpleLight);
 
-    // 7. Interactive Physics & Interaction State
+    /* =========================================================================
+       7. 3D Floating Tech Stack Nodes & High-Resolution Vector Badge Generator
+       ========================================================================= */
+    const techStackList = [
+        { id: 'react', name: 'React & React Native', shortName: 'REACT', tag: 'Core / Mobile', desc: 'Cross-platform mobile apps & declarative components', color: '#61dafb', iconEmoji: '⚛️', ring: 1, radius: 2.55, offset: 0, speed: 0.35 },
+        { id: 'js', name: 'JavaScript (ES6+)', shortName: 'JS', tag: 'Language', desc: 'Modern asynchronous web apps & reactive interfaces', color: '#f7df1e', iconEmoji: '📜', ring: 1, radius: 2.55, offset: (Math.PI / 3), speed: 0.35 },
+        { id: 'docker', name: 'Docker Container', shortName: 'DOCKER', tag: 'DevOps', desc: 'Microservices containerization & reproducible envs', color: '#38bdf8', iconEmoji: '🐳', ring: 1, radius: 2.55, offset: (2 * Math.PI / 3), speed: 0.35 },
+        { id: 'python', name: 'Python 3', shortName: 'PYTHON', tag: 'AI & Backend', desc: 'Applied AI, LangGraph agent workflows & backend ML', color: '#38bdf8', iconEmoji: '🐍', ring: 1, radius: 2.55, offset: Math.PI, speed: 0.35 },
+        { id: 'node', name: 'Node.js / Express', shortName: 'NODE.JS', tag: 'Backend', desc: 'High-concurrency RESTful APIs & event-driven backend', color: '#22c55e', iconEmoji: '🟢', ring: 1, radius: 2.55, offset: (4 * Math.PI / 3), speed: 0.35 },
+        { id: 'git', name: 'Git & GitHub', shortName: 'GIT', tag: 'DevOps', desc: 'Distributed version control & automated CI/CD workflows', color: '#f97316', iconEmoji: '🐙', ring: 1, radius: 2.55, offset: (5 * Math.PI / 3), speed: 0.35 },
+        
+        { id: 'ts', name: 'TypeScript', shortName: 'TS', tag: 'Language', desc: 'Static typing, interfaces & scalable frontend architectures', color: '#3178c6', iconEmoji: '🔷', ring: 2, radius: 2.95, offset: (Math.PI / 6), speed: -0.28 },
+        { id: 'langgraph', name: 'LangGraph & AI', shortName: 'LANGGRAPH', tag: 'Applied AI', desc: 'Autonomous multi-agent orchestration & vector RAG', color: '#c084fc', iconEmoji: '🧠', ring: 2, radius: 2.95, offset: (Math.PI / 2), speed: -0.28 },
+        { id: 'mongo', name: 'MongoDB', shortName: 'MONGODB', tag: 'Database', desc: 'Flexible NoSQL document stores & Atlas cloud database', color: '#10b981', iconEmoji: '🍃', ring: 2, radius: 2.95, offset: (5 * Math.PI / 6), speed: -0.28 },
+        { id: 'cpp', name: 'C++ Systems', shortName: 'C++', tag: 'Systems', desc: 'Algorithmic computing, DSA & performance-critical code', color: '#0ea5e9', iconEmoji: '⚙️', ring: 2, radius: 2.95, offset: (7 * Math.PI / 6), speed: -0.28 },
+        { id: 'postgres', name: 'PostgreSQL', shortName: 'POSTGRES', tag: 'Database', desc: 'ACID relational databases, complex SQL & normalization', color: '#818cf8', iconEmoji: '🐘', ring: 2, radius: 2.95, offset: (3 * Math.PI / 2), speed: -0.28 },
+        { id: 'mediapipe', name: 'MediaPipe CV', shortName: 'VISION', tag: 'Computer Vision', desc: 'On-device real-time pose estimation & face biometrics', color: '#06b6d4', iconEmoji: '👁️', ring: 2, radius: 2.95, offset: (11 * Math.PI / 6), speed: -0.28 }
+    ];
+
+    // Dedicated Orbit Groups matching gyroscopic ring planes
+    const orbitGroup1 = new THREE.Group();
+    orbitGroup1.rotation.x = Math.PI / 3;
+    orbitGroup1.rotation.y = Math.PI / 6;
+    masterGroup.add(orbitGroup1);
+
+    const orbitGroup2 = new THREE.Group();
+    orbitGroup2.rotation.x = -Math.PI / 4;
+    orbitGroup2.rotation.z = Math.PI / 5;
+    masterGroup.add(orbitGroup2);
+
+    // Canvas Texture Generator for High-Resolution Glass Badges
+    function createTechBadgeTexture(tech) {
+        const size = 256;
+        const offscreenCanvas = document.createElement('canvas');
+        offscreenCanvas.width = size;
+        offscreenCanvas.height = size;
+        const ctx = offscreenCanvas.getContext('2d');
+
+        const cx = size / 2;
+        const cy = 106;
+        const r = 70;
+
+        // Outer Glow Halo
+        ctx.save();
+        ctx.shadowColor = tech.color;
+        ctx.shadowBlur = 24;
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.92)';
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+
+        // Glassmorphic Inner Radial Gradient
+        const grad = ctx.createRadialGradient(cx, cy - 20, 10, cx, cy, r);
+        grad.addColorStop(0, 'rgba(30, 41, 59, 0.95)');
+        grad.addColorStop(0.7, 'rgba(15, 23, 42, 0.96)');
+        grad.addColorStop(1, 'rgba(10, 15, 25, 0.98)');
+        ctx.fillStyle = grad;
+        ctx.beginPath();
+        ctx.arc(cx, cy, r - 2, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Glowing Cyber Rim Border
+        ctx.strokeStyle = tech.color;
+        ctx.lineWidth = 4.5;
+        ctx.stroke();
+
+        // Inner Tech-Corner Accents
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.arc(cx, cy, r - 8, -Math.PI * 0.25, Math.PI * 0.25);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(cx, cy, r - 8, Math.PI * 0.75, Math.PI * 1.25);
+        ctx.stroke();
+
+        // Draw Specific Vector Brand Glyphs inside the badge
+        ctx.save();
+        ctx.translate(cx, cy);
+        drawTechVectorGlyph(ctx, tech.id, tech.color);
+        ctx.restore();
+
+        // Label Pill Box below Badge
+        const pillY = 202;
+        const pillW = 140;
+        const pillH = 34;
+        const pillX = cx - pillW / 2;
+        const pillR = 10;
+
+        ctx.save();
+        ctx.shadowColor = 'rgba(0,0,0,0.6)';
+        ctx.shadowBlur = 10;
+        ctx.fillStyle = 'rgba(10, 15, 22, 0.94)';
+        ctx.beginPath();
+        ctx.roundRect ? ctx.roundRect(pillX, pillY, pillW, pillH, pillR) : ctx.rect(pillX, pillY, pillW, pillH);
+        ctx.fill();
+
+        ctx.strokeStyle = tech.color;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Label Typography
+        ctx.font = '700 17px Inter, -apple-system, sans-serif';
+        ctx.fillStyle = '#f8fafc';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(tech.shortName, cx, pillY + pillH / 2 + 1);
+        ctx.restore();
+
+        const texture = new THREE.CanvasTexture(offscreenCanvas);
+        texture.minFilter = THREE.LinearFilter;
+        texture.magFilter = THREE.LinearFilter;
+        return texture;
+    }
+
+    // High Precision Canvas Vector Drawing for Each Tech Stack
+    function drawTechVectorGlyph(ctx, id, color) {
+        ctx.fillStyle = color;
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 3.5;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+
+        switch (id) {
+            case 'react':
+                // Central Nucleus Dot
+                ctx.beginPath();
+                ctx.arc(0, 0, 7.5, 0, Math.PI * 2);
+                ctx.fill();
+                // 3 Orbital Ellipses
+                for (let i = 0; i < 3; i++) {
+                    ctx.save();
+                    ctx.rotate(i * (Math.PI / 3));
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, 36, 13, 0, 0, Math.PI * 2);
+                    ctx.stroke();
+                    ctx.restore();
+                }
+                break;
+
+            case 'js':
+                // JS Monogram Badge
+                ctx.font = '900 36px Inter, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('JS', 0, 2);
+                break;
+
+            case 'ts':
+                // TS Monogram Badge
+                ctx.font = '900 36px Inter, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('TS', 0, 2);
+                break;
+
+            case 'docker':
+                // Docker Container Grid & Whale Silhouette
+                // Container boxes
+                const bw = 10, bh = 8;
+                const bx = -22, by = -18;
+                for (let row = 0; row < 2; row++) {
+                    for (let col = 0; col < 3; col++) {
+                        ctx.fillStyle = color;
+                        ctx.fillRect(bx + col * (bw + 2), by + row * (bh + 2), bw, bh);
+                    }
+                }
+                ctx.fillRect(bx + 1 * (bw + 2), by - 10, bw, bh);
+                // Whale body bottom curve
+                ctx.beginPath();
+                ctx.moveTo(-28, 4);
+                ctx.lineTo(26, 4);
+                ctx.bezierCurveTo(28, 16, 12, 22, -10, 22);
+                ctx.bezierCurveTo(-26, 22, -32, 14, -28, 4);
+                ctx.fill();
+                // Whale Tail
+                ctx.beginPath();
+                ctx.moveTo(-28, 4);
+                ctx.lineTo(-36, -4);
+                ctx.lineTo(-34, 4);
+                ctx.fill();
+                break;
+
+            case 'python':
+                // Dual Interlocking Python Snakes
+                // Top Snake (Cyan)
+                ctx.beginPath();
+                ctx.moveTo(-16, -18);
+                ctx.lineTo(6, -18);
+                ctx.arc(6, -8, 10, -Math.PI / 2, 0);
+                ctx.lineTo(16, 0);
+                ctx.arc(6, 0, 10, 0, Math.PI / 2);
+                ctx.lineTo(-6, 10);
+                ctx.stroke();
+                // Eye 1
+                ctx.beginPath();
+                ctx.arc(0, -12, 3, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Bottom Snake (Yellow Accent)
+                ctx.strokeStyle = '#f59e0b';
+                ctx.fillStyle = '#f59e0b';
+                ctx.beginPath();
+                ctx.moveTo(16, 18);
+                ctx.lineTo(-6, 18);
+                ctx.arc(-6, 8, 10, Math.PI / 2, Math.PI);
+                ctx.lineTo(-16, 0);
+                ctx.arc(-6, 0, 10, Math.PI, 3 * Math.PI / 2);
+                ctx.lineTo(6, -10);
+                ctx.stroke();
+                // Eye 2
+                ctx.beginPath();
+                ctx.arc(0, 12, 3, 0, Math.PI * 2);
+                ctx.fill();
+                break;
+
+            case 'node':
+                // Hexagonal Node Logo with 'N'
+                ctx.beginPath();
+                for (let a = 0; a < 6; a++) {
+                    const angle = a * Math.PI / 3 - Math.PI / 6;
+                    const hx = Math.cos(angle) * 32;
+                    const hy = Math.sin(angle) * 32;
+                    if (a === 0) ctx.moveTo(hx, hy);
+                    else ctx.lineTo(hx, hy);
+                }
+                ctx.closePath();
+                ctx.stroke();
+                ctx.font = '800 28px Inter, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('N', 0, 2);
+                break;
+
+            case 'cpp':
+                // C++ Monogram with Cyber Brackets
+                ctx.font = '800 28px Inter, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.textBaseline = 'middle';
+                ctx.fillText('C++', 0, 2);
+                // Precision Cyber brackets
+                ctx.beginPath();
+                ctx.moveTo(-28, -14);
+                ctx.lineTo(-34, -14);
+                ctx.lineTo(-34, 14);
+                ctx.lineTo(-28, 14);
+                ctx.moveTo(28, -14);
+                ctx.lineTo(34, -14);
+                ctx.lineTo(34, 14);
+                ctx.lineTo(28, 14);
+                ctx.stroke();
+                break;
+
+            case 'git':
+                // Git Branching Graph
+                ctx.beginPath();
+                // Main Stem
+                ctx.moveTo(-12, -22);
+                ctx.lineTo(-12, 22);
+                // Branch Curve
+                ctx.moveTo(-12, -4);
+                ctx.bezierCurveTo(0, -4, 16, 2, 16, 12);
+                ctx.stroke();
+                // 3 Branch Commit Circles
+                ctx.beginPath();
+                ctx.arc(-12, -20, 5.5, 0, Math.PI * 2);
+                ctx.arc(-12, 20, 5.5, 0, Math.PI * 2);
+                ctx.arc(16, 14, 5.5, 0, Math.PI * 2);
+                ctx.fill();
+                break;
+
+            case 'mongo':
+                // MongoDB Leaf Shape
+                ctx.beginPath();
+                ctx.moveTo(0, -28);
+                ctx.bezierCurveTo(22, -12, 22, 18, 0, 28);
+                ctx.bezierCurveTo(-22, 18, -22, -12, 0, -28);
+                ctx.fill();
+                // Central leaf spine
+                ctx.strokeStyle = '#064e3b';
+                ctx.lineWidth = 2.5;
+                ctx.beginPath();
+                ctx.moveTo(0, -22);
+                ctx.lineTo(0, 24);
+                ctx.stroke();
+                break;
+
+            case 'postgres':
+                // Relational Database Cylinders / Stack
+                ctx.fillStyle = color;
+                ctx.beginPath();
+                ctx.ellipse(0, -16, 26, 9, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.moveTo(-26, -16);
+                ctx.lineTo(-26, 4);
+                ctx.ellipse(0, 4, 26, 9, 0, 0, Math.PI);
+                ctx.lineTo(26, -16);
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.moveTo(-26, 4);
+                ctx.lineTo(-26, 18);
+                ctx.ellipse(0, 18, 26, 9, 0, 0, Math.PI);
+                ctx.lineTo(26, 4);
+                ctx.fill();
+                break;
+
+            case 'langgraph':
+                // Neural Multi-Agent Graph Network
+                ctx.beginPath();
+                ctx.arc(0, 0, 8, 0, Math.PI * 2);
+                ctx.fill();
+                // 4 Satellite Agent nodes connected by lines
+                const nodes = [
+                    { x: -22, y: -18 },
+                    { x: 22, y: -18 },
+                    { x: -22, y: 18 },
+                    { x: 22, y: 18 }
+                ];
+                nodes.forEach(n => {
+                    ctx.beginPath();
+                    ctx.moveTo(0, 0);
+                    ctx.lineTo(n.x, n.y);
+                    ctx.stroke();
+                    ctx.beginPath();
+                    ctx.arc(n.x, n.y, 5, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+                break;
+
+            case 'mediapipe':
+                // Computer Vision Landmark Aperture / Eye
+                ctx.beginPath();
+                ctx.ellipse(0, 0, 32, 18, 0, 0, Math.PI * 2);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.arc(0, 0, 8, 0, Math.PI * 2);
+                ctx.fill();
+                // Crosshair corner tracking brackets
+                ctx.beginPath();
+                ctx.moveTo(-16, -16);
+                ctx.lineTo(-10, -16);
+                ctx.moveTo(-16, -16);
+                ctx.lineTo(-16, -10);
+
+                ctx.moveTo(16, -16);
+                ctx.lineTo(10, -16);
+                ctx.moveTo(16, -16);
+                ctx.lineTo(16, -10);
+
+                ctx.moveTo(-16, 16);
+                ctx.lineTo(-10, 16);
+                ctx.moveTo(-16, 16);
+                ctx.lineTo(-16, 10);
+
+                ctx.moveTo(16, 16);
+                ctx.lineTo(10, 16);
+                ctx.moveTo(16, 16);
+                ctx.lineTo(16, 10);
+                ctx.stroke();
+                break;
+
+            default:
+                ctx.beginPath();
+                ctx.arc(0, 0, 14, 0, Math.PI * 2);
+                ctx.fill();
+        }
+    }
+
+    // Build 3D Sprites for Each Tech Stack Item
+    const techSprites = [];
+
+    techStackList.forEach((tech, idx) => {
+        const texture = createTechBadgeTexture(tech);
+        const spriteMaterial = new THREE.SpriteMaterial({
+            map: texture,
+            transparent: true,
+            depthTest: false,
+            blending: THREE.NormalBlending
+        });
+
+        const sprite = new THREE.Sprite(spriteMaterial);
+        const baseScale = 0.68;
+        sprite.scale.set(baseScale, baseScale, 1);
+
+        sprite.userData = {
+            ...tech,
+            baseScale: baseScale,
+            currentScale: baseScale,
+            targetScale: baseScale,
+            pulseEnergy: 0,
+            verticalPhase: (idx * (Math.PI / 6)),
+            verticalSpeed: 1.1 + (idx % 3) * 0.2
+        };
+
+        if (tech.ring === 1) {
+            orbitGroup1.add(sprite);
+        } else {
+            orbitGroup2.add(sprite);
+        }
+
+        techSprites.push(sprite);
+    });
+
+    // 8. Holographic HUD Tooltip Element & Interaction State
+    const tooltipHud = document.getElementById('tech-tooltip-hud');
+    const tooltipIcon = document.getElementById('techTooltipIcon');
+    const tooltipTitle = document.getElementById('techTooltipTitle');
+    const tooltipTag = document.getElementById('techTooltipTag');
+    const tooltipDesc = document.getElementById('techTooltipDesc');
+
+    function showTechTooltip(data) {
+        if (!tooltipHud) return;
+        if (tooltipIcon) tooltipIcon.textContent = data.iconEmoji || '⚡';
+        if (tooltipTitle) tooltipTitle.textContent = data.name;
+        if (tooltipTag) {
+            tooltipTag.textContent = data.tag;
+            tooltipTag.style.borderColor = data.color;
+            tooltipTag.style.color = data.color;
+        }
+        if (tooltipDesc) tooltipDesc.textContent = data.desc;
+        tooltipHud.classList.add('active');
+    }
+
+    function hideTechTooltip() {
+        if (!tooltipHud) return;
+        tooltipHud.classList.remove('active');
+    }
+
+    // 9. Interactive Physics, Raycasting & Cursor Handling
     const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
+    const raycaster = new THREE.Raycaster();
+    const pointer = new THREE.Vector2(-999, -999);
+    let hoveredSprite = null;
     let isDragging = false;
     let previousPointerPosition = { x: 0, y: 0 };
     let dragRotationVelocity = { x: 0, y: 0 };
@@ -340,16 +881,18 @@ function initHero3DCanvas() {
     let shockwaveTime = 0;
     let isHeroVisible = true;
 
-    // Mouse movement listener (Window & Hero)
     function onPointerMove(e) {
-        const rect = heroSection.getBoundingClientRect();
-        // Normalized Coordinates between -1 and 1
-        mouse.targetX = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-        mouse.targetY = -(((e.clientY - rect.top) / rect.height) * 2 - 1);
+        const heroRect = heroSection.getBoundingClientRect();
+        mouse.targetX = ((e.clientX - heroRect.left) / heroRect.width) * 2 - 1;
+        mouse.targetY = -(((e.clientY - heroRect.top) / heroRect.height) * 2 - 1);
         
-        // Clamping to sane range
         mouse.targetX = Math.max(-1.2, Math.min(1.2, mouse.targetX));
         mouse.targetY = Math.max(-1.2, Math.min(1.2, mouse.targetY));
+
+        // Raycaster Coordinates
+        const canvasRect = renderer.domElement.getBoundingClientRect();
+        pointer.x = ((e.clientX - canvasRect.left) / canvasRect.width) * 2 - 1;
+        pointer.y = -((e.clientY - canvasRect.top) / canvasRect.height) * 2 + 1;
 
         if (isDragging) {
             const deltaX = e.clientX - previousPointerPosition.x;
@@ -375,6 +918,17 @@ function initHero3DCanvas() {
         isDragging = false;
     }
 
+    function onCanvasClick() {
+        // If clicked on a tech sprite, boost its kinetic energy
+        if (hoveredSprite) {
+            hoveredSprite.userData.pulseEnergy = 1.2;
+            triggerShockwave();
+            showTechTooltip(hoveredSprite.userData);
+        } else {
+            triggerShockwave();
+        }
+    }
+
     function triggerShockwave() {
         shockwaveIntensity = 1.0;
         shockwaveTime = 0;
@@ -383,13 +937,17 @@ function initHero3DCanvas() {
     window.addEventListener('pointermove', onPointerMove);
     container.addEventListener('pointerdown', onPointerDown);
     window.addEventListener('pointerup', onPointerUp);
-    container.addEventListener('click', triggerShockwave);
+    container.addEventListener('click', onCanvasClick);
 
     // Touch support for mobile devices
     container.addEventListener('touchstart', (e) => {
         if (e.touches.length === 1) {
             isDragging = true;
             previousPointerPosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+            
+            const canvasRect = renderer.domElement.getBoundingClientRect();
+            pointer.x = ((e.touches[0].clientX - canvasRect.left) / canvasRect.width) * 2 - 1;
+            pointer.y = -((e.touches[0].clientY - canvasRect.top) / canvasRect.height) * 2 + 1;
             triggerShockwave();
         }
     }, { passive: true });
@@ -411,9 +969,10 @@ function initHero3DCanvas() {
 
     container.addEventListener('touchend', () => {
         isDragging = false;
+        pointer.set(-999, -999);
     });
 
-    // 8. Performance: Intersection Observer to pause off-screen rendering
+    // 10. Performance: Intersection Observer
     const heroObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             isHeroVisible = entry.isIntersecting;
@@ -421,7 +980,7 @@ function initHero3DCanvas() {
     }, { threshold: 0.05 });
     heroObserver.observe(heroSection);
 
-    // 9. Resize Handling
+    // 11. Resize Handling
     function handleResize() {
         if (!container || !renderer || !camera) return;
         const newWidth = container.clientWidth;
@@ -437,7 +996,7 @@ function initHero3DCanvas() {
 
     window.addEventListener('resize', handleResize);
 
-    // 10. Smooth 60 FPS Render & Animation Loop
+    // 12. 60 FPS Render & Animation Loop
     let clock = new THREE.Clock();
 
     function animate() {
@@ -461,8 +1020,8 @@ function initHero3DCanvas() {
         }
 
         // Base Rotations
-        outerMesh.rotation.y = elapsedTime * 0.15 + (mouse.x * 0.4);
-        outerMesh.rotation.x = Math.sin(elapsedTime * 0.2) * 0.15 + (-mouse.y * 0.3);
+        outerMesh.rotation.y = elapsedTime * 0.12 + (mouse.x * 0.35);
+        outerMesh.rotation.x = Math.sin(elapsedTime * 0.2) * 0.12 + (-mouse.y * 0.25);
         vertexPoints.rotation.copy(outerMesh.rotation);
 
         // Core Independent Counter-Rotation
@@ -471,23 +1030,67 @@ function initHero3DCanvas() {
         coreGroup.rotation.x = Math.cos(elapsedTime * 0.3) * 0.25;
 
         // Ring Rotations
-        ring1.rotation.z = elapsedTime * 0.25;
-        ring2.rotation.y = -elapsedTime * 0.2;
+        ring1.rotation.z = elapsedTime * 0.22;
+        ring2.rotation.y = -elapsedTime * 0.18;
 
         // Satellites motion along orbital paths
         const sat1Angle = elapsedTime * 0.8;
         sat1.position.set(
-            Math.cos(sat1Angle) * 2.45,
-            Math.sin(sat1Angle) * 1.7,
+            Math.cos(sat1Angle) * 2.55,
+            Math.sin(sat1Angle) * 1.8,
             Math.sin(sat1Angle * 0.5) * 1.2
         );
 
         const sat2Angle = -elapsedTime * 0.65;
         sat2.position.set(
-            Math.sin(sat2Angle) * 1.5,
-            Math.cos(sat2Angle) * 2.7,
-            Math.cos(sat2Angle * 0.8) * 1.4
+            Math.sin(sat2Angle) * 1.6,
+            Math.cos(sat2Angle) * 2.95,
+            Math.cos(sat2Angle * 0.8) * 1.5
         );
+
+        // Dynamic 3D Tech Stack Nodes Orbital Positioning
+        techSprites.forEach((sprite) => {
+            const data = sprite.userData;
+            const currentAngle = data.offset + (elapsedTime * data.speed);
+            const floatZ = Math.sin(elapsedTime * data.verticalSpeed + data.verticalPhase) * 0.16;
+
+            const orbitX = Math.cos(currentAngle) * data.radius;
+            const orbitY = Math.sin(currentAngle) * data.radius;
+            sprite.position.set(orbitX, orbitY, floatZ);
+        });
+
+        // 3D Raycasting for Hover & Interactive Telemetry
+        raycaster.setFromCamera(pointer, camera);
+        const intersects = raycaster.intersectObjects(techSprites, false);
+
+        if (intersects.length > 0) {
+            const hit = intersects[0].object;
+            if (hoveredSprite !== hit) {
+                hoveredSprite = hit;
+                container.style.cursor = 'pointer';
+                showTechTooltip(hoveredSprite.userData);
+            }
+        } else {
+            if (hoveredSprite) {
+                hoveredSprite = null;
+                container.style.cursor = isDragging ? 'grabbing' : 'grab';
+                hideTechTooltip();
+            }
+        }
+
+        // Smooth Scale Interpolation for Hover & Kinetic Energy Pulse
+        techSprites.forEach((sprite) => {
+            const data = sprite.userData;
+            const isHovered = (sprite === hoveredSprite);
+            const target = (isHovered ? data.baseScale * 1.35 : data.baseScale) * (1 + data.pulseEnergy * 0.35);
+            
+            data.currentScale += (target - data.currentScale) * 0.12;
+            sprite.scale.set(data.currentScale, data.currentScale, 1);
+
+            if (data.pulseEnergy > 0.01) {
+                data.pulseEnergy *= 0.93;
+            }
+        });
 
         // Dynamic Lighting Orbit
         cyanLight.position.x = Math.sin(elapsedTime * 0.7) * 6;
@@ -504,7 +1107,6 @@ function initHero3DCanvas() {
             cyanLight.intensity = 3.5 + (shockwaveIntensity * 4.0);
             emeraldLight.intensity = 3.0 + (shockwaveIntensity * 3.0);
         } else {
-            // Subtle breathing scale
             const breath = 1.0 + Math.sin(elapsedTime * 1.5) * 0.025;
             masterGroup.scale.set(breath, breath, breath);
             cyanLight.intensity = 3.5;
@@ -521,13 +1123,11 @@ function initHero3DCanvas() {
             const speed = particleSpeeds[i];
             const phase = particlePhases[i];
 
-            // Wave undulation
             const wave = Math.sin(elapsedTime * speed + phase) * 0.12;
             let px = ox + Math.sin(elapsedTime * 0.3 + phase) * 0.15;
             let py = oy + wave;
             let pz = oz + Math.cos(elapsedTime * 0.3 + phase) * 0.15;
 
-            // Shockwave dispersion outward
             if (shockwaveIntensity > 0.01) {
                 const dist = Math.sqrt(ox * ox + oy * oy + oz * oz);
                 const push = (dist > 0.1 ? dist : 1.0) * shockwaveIntensity * 0.35;
@@ -536,7 +1136,6 @@ function initHero3DCanvas() {
                 pz += (oz / dist) * push;
             }
 
-            // Magnetic attraction/reaction towards pointer
             const mouseEffectX = mouse.x * 0.4;
             const mouseEffectY = mouse.y * 0.4;
             px += mouseEffectX * (1.0 / (1.0 + Math.abs(ox)));
