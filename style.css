@@ -11,6 +11,12 @@
     --accent-secondary: #10b981; /* Emerald */
     --accent-gradient: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
     
+    /* Ambient Glow - Navy Blue Palette */
+    --glow-navy-deep: rgba(30, 58, 138, 0.40);
+    --glow-navy-royal: rgba(29, 78, 216, 0.30);
+    --glow-navy-midnight: rgba(15, 37, 84, 0.35);
+    --glow-navy-canvas: radial-gradient(circle, rgba(30, 58, 138, 0.45) 0%, rgba(15, 37, 84, 0.25) 50%, transparent 70%);
+    
     /* Typography */
     --font-main: 'Inter', sans-serif;
     
@@ -576,7 +582,7 @@ ul {
     width: 360px;
     height: 360px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(14, 165, 233, 0.25) 0%, rgba(16, 185, 129, 0.15) 50%, transparent 70%);
+    background: var(--glow-navy-canvas, radial-gradient(circle, rgba(30, 58, 138, 0.45) 0%, rgba(15, 37, 84, 0.25) 50%, transparent 70%));
     filter: blur(50px);
     pointer-events: none;
     z-index: 1;
@@ -798,7 +804,7 @@ ul {
     left: -10%;
     width: 450px;
     height: 450px;
-    background: rgba(14, 165, 233, 0.18);
+    background: var(--glow-navy-deep, rgba(30, 58, 138, 0.40));
 }
 
 .shape-2 {
@@ -806,7 +812,7 @@ ul {
     right: -5%;
     width: 400px;
     height: 400px;
-    background: rgba(16, 185, 129, 0.16);
+    background: var(--glow-navy-royal, rgba(29, 78, 216, 0.30));
 }
 
 .shape-3 {
@@ -814,7 +820,7 @@ ul {
     left: 45%;
     width: 280px;
     height: 280px;
-    background: rgba(99, 102, 241, 0.12);
+    background: var(--glow-navy-midnight, rgba(15, 37, 84, 0.35));
 }
 
 /* Enhanced About Section */
