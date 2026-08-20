@@ -414,14 +414,49 @@ ul {
     box-shadow: 0 0 8px rgba(14, 165, 233, 0.7);
 }
 
-.nav-links a.active {
-    color: var(--text-primary);
-    font-weight: 600;
-}
-
 .nav-links a.active::after {
     width: 100%;
     box-shadow: 0 0 10px rgba(14, 165, 233, 0.8);
+}
+
+/* Theme Switcher Button */
+.theme-toggle-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.35rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s var(--ease-spring);
+    cursor: pointer;
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: #f1f5f9;
+}
+
+.theme-toggle-btn:hover {
+    background: rgba(14, 165, 233, 0.15);
+    border-color: rgba(14, 165, 233, 0.45);
+    color: #38bdf8;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 15px rgba(14, 165, 233, 0.2);
+}
+
+.theme-toggle-btn .theme-icon {
+    width: 1.1em;
+    height: 1.1em;
+    color: #facc15;
+    transition: transform 0.4s var(--ease-spring);
+}
+
+.theme-toggle-btn:hover .theme-icon {
+    transform: rotate(45deg) scale(1.15);
+}
+
+.theme-toggle-btn::after {
+    display: none !important;
 }
 
 .hamburger {
