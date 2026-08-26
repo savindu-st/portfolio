@@ -710,41 +710,69 @@ footer {
     font-weight: 600;
 }
 
-/* Theme Toggle Button */
+/* Theme Toggle Button in Light Mode */
 .theme-toggle-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.45rem;
-    padding: 0.4rem 0.85rem;
+    gap: 0.55rem;
+    padding: 0.32rem 0.85rem 0.32rem 0.45rem;
     border-radius: 50px;
     font-size: 0.85rem;
     font-weight: 700;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
     cursor: pointer;
     text-decoration: none;
     background: #ffffff;
-    border: 1px solid rgba(203, 213, 225, 0.85);
+    border: 1px solid rgba(203, 213, 225, 0.9);
     color: #020617;
-    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    box-shadow: 0 3px 12px rgba(15, 23, 42, 0.06);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .theme-toggle-btn:hover {
     background: rgba(2, 132, 199, 0.08);
-    border-color: rgba(2, 132, 199, 0.35);
+    border-color: rgba(2, 132, 199, 0.45);
     color: #0284c7;
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 4px 15px rgba(2, 132, 199, 0.15);
+    transform: translateY(-2px) scale(1.04);
+    box-shadow: 0 8px 25px rgba(2, 132, 199, 0.15), 0 0 15px rgba(2, 132, 199, 0.1);
 }
 
-.theme-toggle-btn .theme-icon {
-    width: 1.1em;
-    height: 1.1em;
-    color: #0284c7;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+.theme-switch-slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(2, 132, 199, 0.12), rgba(14, 165, 233, 0.2));
+    border: 1px solid rgba(2, 132, 199, 0.3);
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 2px 8px rgba(2, 132, 199, 0.1);
 }
 
-.theme-toggle-btn:hover .theme-icon {
-    transform: rotate(-25deg) scale(1.15);
+.theme-toggle-btn:hover .theme-switch-slider {
+    background: linear-gradient(135deg, #0284c7, #0ea5e9);
+    border-color: #0284c7;
+    box-shadow: 0 0 14px rgba(2, 132, 199, 0.4);
+    transform: rotate(-20deg) scale(1.08);
+}
+
+.theme-toggle-btn .theme-icon-moon {
+    width: 15px;
+    height: 15px;
+    color: #0284c7;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), color 0.3s ease;
+}
+
+.theme-toggle-btn:hover .theme-icon-moon {
+    color: #ffffff;
+    transform: rotate(-25deg);
+}
+
+.theme-toggle-btn .theme-toggle-text {
+    font-size: 0.85rem;
+    font-weight: 700;
 }
 
 @media (max-width: 768px) {

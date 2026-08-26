@@ -21,6 +21,53 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Smart Theme Navigation (Seamless Switching between index.html and light.html)
+    function initThemeNavigation() {
+        const themeBtn = document.getElementById('theme-toggle');
+        if (!themeBtn) return;
+
+        function getCurrentVisibleSection() {
+            const sections = document.querySelectorAll('section[id]');
+            const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+            let currentSectionId = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 220;
+                const sectionHeight = section.offsetHeight;
+                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+            return currentSectionId;
+        }
+
+        themeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetHref = themeBtn.getAttribute('href') || (window.location.pathname.includes('light.html') ? 'index.html' : 'light.html');
+            const activeSection = getCurrentVisibleSection();
+
+            // Save preference to localStorage
+            const isCurrentlyLight = window.location.pathname.includes('light.html');
+            localStorage.setItem('portfolio-theme', isCurrentlyLight ? 'dark' : 'light');
+
+            // Build target URL preserving current section anchor
+            let finalUrl = targetHref.split('#')[0];
+            if (activeSection && activeSection !== 'hero') {
+                finalUrl += `#${activeSection}`;
+            }
+
+            // Quick smooth transition
+            document.body.style.transition = 'opacity 0.18s ease';
+            document.body.style.opacity = '0.75';
+
+            setTimeout(() => {
+                window.location.href = finalUrl;
+            }, 100);
+        });
+    }
+
+    initThemeNavigation();
+
     // Scroll Progress & Active Nav Scrollspy
     const scrollProgressBar = document.getElementById('scroll-progress');
     const sections = document.querySelectorAll('section[id]');
