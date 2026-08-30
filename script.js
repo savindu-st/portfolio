@@ -21,49 +21,70 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Smart Theme Navigation (Seamless Switching between index.html and light.html)
+    // Instant In-Place Theme Switcher with Fluid Physics
     function initThemeNavigation() {
         const themeBtn = document.getElementById('theme-toggle');
         if (!themeBtn) return;
 
-        function getCurrentVisibleSection() {
-            const sections = document.querySelectorAll('section[id]');
-            const scrollY = window.pageYOffset || document.documentElement.scrollTop;
-            let currentSectionId = '';
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - 220;
-                const sectionHeight = section.offsetHeight;
-                if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
-                    currentSectionId = section.getAttribute('id');
-                }
-            });
-            return currentSectionId;
+        function updateButtonAccessibility(theme) {
+            if (theme === 'light') {
+                themeBtn.setAttribute('aria-label', 'Switch to Dark Theme');
+                themeBtn.setAttribute('title', 'Switch to Dark Theme');
+            } else {
+                themeBtn.setAttribute('aria-label', 'Switch to Light Theme');
+                themeBtn.setAttribute('title', 'Switch to Light Theme');
+            }
         }
 
-        themeBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetHref = themeBtn.getAttribute('href') || (window.location.pathname.includes('light.html') ? 'index.html' : 'light.html');
-            const activeSection = getCurrentVisibleSection();
+        // Initialize button accessibility from current theme
+        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+        updateButtonAccessibility(currentTheme);
 
-            // Save preference to localStorage
-            const isCurrentlyLight = window.location.pathname.includes('light.html');
-            localStorage.setItem('portfolio-theme', isCurrentlyLight ? 'dark' : 'light');
+        function triggerThemeSwitch(e) {
+            if (e) e.preventDefault();
+            if (themeBtn.classList.contains('is-switching')) return;
 
-            // Build target URL preserving current section anchor
-            let finalUrl = targetHref.split('#')[0];
-            if (activeSection && activeSection !== 'hero') {
-                finalUrl += `#${activeSection}`;
-            }
+            const current = document.documentElement.getAttribute('data-theme') || 'dark';
+            const nextTheme = current === 'light' ? 'dark' : 'light';
 
-            // Quick smooth transition
-            document.body.style.transition = 'opacity 0.18s ease';
-            document.body.style.opacity = '0.75';
+            // Start switching micro-animations
+            themeBtn.classList.add('is-switching');
+            document.documentElement.classList.add('theme-transition');
 
+            // Apply new theme attribute
+            document.documentElement.setAttribute('data-theme', nextTheme);
+            try {
+                localStorage.setItem('portfolio-theme', nextTheme);
+            } catch (err) {}
+
+            updateButtonAccessibility(nextTheme);
+
+            // Clean up animation classes after transition completes
             setTimeout(() => {
-                window.location.href = finalUrl;
-            }, 100);
+                themeBtn.classList.remove('is-switching');
+                document.documentElement.classList.remove('theme-transition');
+            }, 450);
+        }
+
+        themeBtn.addEventListener('click', triggerThemeSwitch);
+        themeBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                triggerThemeSwitch(e);
+            }
         });
+
+        // Listen for OS system theme changes if user hasn't explicitly set a preference
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
+                try {
+                    if (!localStorage.getItem('portfolio-theme')) {
+                        const osTheme = e.matches ? 'light' : 'dark';
+                        document.documentElement.setAttribute('data-theme', osTheme);
+                        updateButtonAccessibility(osTheme);
+                    }
+                } catch (err) {}
+            });
+        }
     }
 
     initThemeNavigation();
