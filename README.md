@@ -2,11 +2,29 @@
 
 A modern, high-performance, and visually captivating developer portfolio showcasing full-stack web applications, AI agent systems, and machine learning projects.
 
-![Portfolio Preview](image.PNG)
+![Portfolio Preview](assets/image.png)
+
+## 📁 Project Structure
+
+```text
+portfolio/
+├── index.html          # Main single-page application & content
+├── css/
+│   ├── style.css       # Core design tokens, layout & dark theme
+│   └── light.css       # Scoped high-contrast light theme overrides
+├── js/
+│   └── script.js       # Dynamic interactions, 3D Three.js canvas & theme switching
+├── assets/
+│   ├── favicon.svg     # Futuristic monogram site favicon
+│   ├── image.png       # High-resolution profile portrait
+│   └── CV_savindu.pdf  # Downloadable resume
+└── README.md           # Project documentation
+```
 
 ## ✨ Features
 
 - 🌌 **Interactive 3D Graphics**: Built-in Three.js dynamic canvas background responding to cursor motion and scroll.
+- 🌓 **Instant In-Place Theme Switching**: Seamless toggle between Dark & Light themes with fluid physics and 0ms flash.
 - 🎨 **Modern Dark Glassmorphism**: Sleek typography, glowing accents, vibrant gradient borders, and micro-interactions.
 - 💼 **Interactive Project Showcase**: Dynamic filtering by category, project cards with hover effects, and interactive preview modals.
 - 🛠️ **Skills & Tech Stack**: Categorized skill pills and interactive proficiency breakdowns.
