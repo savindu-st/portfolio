@@ -750,35 +750,30 @@
     box-shadow: 0 2px 14px rgba(245, 158, 11, 0.7), 0 0 18px rgba(251, 191, 36, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
-/* Dynamic Elastic Morph during theme switch */
-[data-theme="light"] .theme-toggle-btn.is-switching .theme-toggle-thumb {
-    transform: translateX(30px) scale(1.25, 0.85);
-}
-
 /* Light Mode Icon Specifics */
 [data-theme="light"] .theme-icon-sun-wrap {
     color: #ffffff;
     opacity: 1;
-    transform: scale(1.05);
+    transform: scale(1.05) rotate(30deg);
     filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
 }
 
 [data-theme="light"] .theme-icon-moon-wrap {
     color: rgba(100, 116, 139, 0.6);
     opacity: 0.65;
-    transform: scale(0.88);
+    transform: scale(0.88) rotate(15deg);
     filter: none;
 }
 
 [data-theme="light"] .theme-toggle-btn:hover .theme-icon-sun-wrap {
-    transform: scale(1.15) rotate(45deg);
+    transform: scale(1.15) rotate(40deg);
     filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.8));
 }
 
 [data-theme="light"] .theme-toggle-btn:hover .theme-icon-moon-wrap {
     color: #0284c7;
     opacity: 0.9;
-    transform: scale(1.02) rotate(-20deg);
+    transform: scale(1.02) rotate(5deg);
     filter: drop-shadow(0 0 6px rgba(2, 132, 199, 0.4));
 }
 

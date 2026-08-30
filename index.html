@@ -29,7 +29,7 @@
     <!-- Google Fonts for sleek typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <!-- Three.js for Lightweight Interactive 3D Graphics -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
@@ -994,44 +994,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <!-- Overlapping Interactive Multi-Modal Visual Showcase -->
-                            <div class="bento-card-visual visual-rag-showcase">
-                                <div class="visual-glass-preview">
-                                    <div class="preview-header">
-                                        <span class="dot red"></span>
-                                        <span class="dot yellow"></span>
-                                        <span class="dot green"></span>
-                                        <span class="preview-title">praja-navigator-pipeline.py</span>
-                                        <span class="live-status-pill"><span class="pulse-dot"></span> 5-Step Pipeline
-                                            Active</span>
-                                    </div>
-                                    <div class="preview-code-block">
-                                        <code><span class="c-kw">async def</span> <span class="c-fn">execute_citizen_workflow</span>(user_query, uploaded_docs):</code>
-                                        <code>    service = <span class="c-kw">await</span> ai_agent.identify_government_service(user_query)</code>
-                                        <code>    situation = <span class="c-kw">await</span> mcq_engine.evaluate_dynamic_mcqs(service.id)</code>
-                                        <code>    forms = <span class="c-kw">await</span> form_builder.create_required_forms(situation)</code>
-                                        <code>    filled_forms = <span class="c-kw">await</span> vision_ocr.autofill_with_docs(uploaded_docs, forms)</code>
-                                        <code>    <span class="c-kw">return</span> roadmap_generator.create_visit_plan_and_doclist(filled_forms)</code>
-                                    </div>
-                                    <!-- Overlapping Live Insight Status Badge -->
-                                    <div class="overlapping-insight-badge">
-                                        <div class="insight-icon">
-                                            <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                                                <polyline points="2 17 12 22 22 17"></polyline>
-                                                <polyline points="2 12 12 17 22 12"></polyline>
-                                            </svg>
-                                        </div>
-                                        <div class="insight-text">
-                                            <span class="i-title">Dual Dashboards Active</span>
-                                            <span class="i-sub">Role: Admin & Citizen Insights Synced</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
                             <div class="project-tech">
                                 <span>Python</span>
                                 <span>React</span>

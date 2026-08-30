@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 themeBtn.classList.remove('is-switching');
                 document.documentElement.classList.remove('theme-transition');
-            }, 450);
+            }, 500);
         }
 
         themeBtn.addEventListener('click', triggerThemeSwitch);

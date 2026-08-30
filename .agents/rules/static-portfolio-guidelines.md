@@ -19,3 +19,37 @@
 
 ## 3. Semantic Iconography
 - Align tech stack pills and badges with standard semantic vector iconography (e.g., multi-tier layered stack icon for "Full Stack", neural graph for "LLM Agents", aperture/crosshair for "Computer Vision", database cylinders for data stores).
+
+## 4. Single-File Theme Architecture & Anti-FOUC
+- **Single Canonical Document**: Never duplicate HTML files for alternate themes (e.g. avoid `index.html` + `light.html`). Keep a single source of truth and toggle themes dynamically in-place.
+- **Anti-FOUC Synchronous Head Initializer**: Place a blocking 3-line inline script at the top of `<head>` before stylesheets or body render to check `localStorage` and OS `prefers-color-scheme`, eliminating split-second theme flashing:
+  ```html
+  <script>
+    (function() {
+      try {
+        const savedTheme = localStorage.getItem('portfolio-theme');
+        if (savedTheme === 'light' || (!savedTheme && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+  ```
+- **Scoped CSS Custom Properties**: Scope base theme variables under `:root` (dark default) and light overrides under `[data-theme="light"]`.
+- **Dual-Icon Minimalist Toggle**:
+  - Display both Sun ☀️ and Moon 🌙 icons simultaneously inside a pill track without text labels.
+  - Implement fluid spring physics (`cubic-bezier(0.34, 1.56, 0.64, 1)`), elastic thumb morphing (`scale(1.25, 0.85)`), and active icon spin animation on click.
+
+## 5. Clean Project Structure
+- Organize static projects into clean, dedicated directories:
+  ```text
+  portfolio/
+  ├── index.html
+  ├── css/ (style.css, light.css)
+  ├── js/ (script.js)
+  ├── assets/ (images, icons, docs)
+  └── README.md
+  ```
+

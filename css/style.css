@@ -113,6 +113,7 @@ ul {
 
 .section-title {
     font-size: 2.5rem;
+    font-weight: 700;
     margin-bottom: 3rem;
     text-align: center;
     position: relative;
@@ -247,6 +248,7 @@ ul {
 .btn-secondary {
     background: rgba(14, 165, 233, 0.05);
     color: var(--text-primary);
+    font-weight: 700;
     border: 2px solid var(--accent-primary);
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
 }
@@ -406,7 +408,7 @@ ul {
 }
 
 .nav-links a {
-    font-weight: 500;
+    font-weight: 600;
     font-size: 1rem;
     position: relative;
     padding: 0.35rem 0.2rem;
@@ -516,9 +518,9 @@ ul {
     border-radius: 50%;
     z-index: 1;
     pointer-events: none;
-    transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1),
-                background 0.35s ease,
-                box-shadow 0.35s ease;
+    transition: transform 0.55s cubic-bezier(0.34, 1.25, 0.64, 1),
+                background 0.4s ease,
+                box-shadow 0.4s ease;
     box-sizing: border-box;
 }
 
@@ -550,18 +552,6 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-toggle-thumb,
     box-shadow: 0 2px 14px rgba(245, 158, 11, 0.8), 0 0 20px rgba(251, 191, 36, 0.7), inset 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
-/* Dynamic Elastic Morph during theme switch */
-html:not([data-theme="light"]) .theme-toggle-btn.is-switching .theme-toggle-thumb,
-[data-theme="dark"] .theme-toggle-btn.is-switching .theme-toggle-thumb,
-.theme-toggle-btn.is-switching.theme-toggle-dark .theme-toggle-thumb {
-    transform: translateX(0px) scale(1.25, 0.85);
-}
-
-[data-theme="light"] .theme-toggle-btn.is-switching .theme-toggle-thumb,
-.theme-toggle-btn.is-switching.theme-toggle-light .theme-toggle-thumb {
-    transform: translateX(30px) scale(1.25, 0.85);
-}
-
 /* Icon Wrappers */
 .theme-icon-wrap {
     position: relative;
@@ -572,10 +562,10 @@ html:not([data-theme="light"]) .theme-toggle-btn.is-switching .theme-toggle-thum
     width: 24px;
     height: 24px;
     pointer-events: none;
-    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
-                color 0.3s ease,
-                opacity 0.3s ease,
-                filter 0.3s ease;
+    transition: transform 0.5s cubic-bezier(0.34, 1.25, 0.64, 1),
+                color 0.35s ease,
+                opacity 0.35s ease,
+                filter 0.35s ease;
 }
 
 /* Sun Icon Styles */
@@ -598,7 +588,7 @@ html:not([data-theme="light"]) .theme-icon-sun-wrap,
 .theme-toggle-dark .theme-icon-sun-wrap {
     color: rgba(148, 163, 184, 0.55);
     opacity: 0.6;
-    transform: scale(0.85);
+    transform: scale(0.85) rotate(0deg);
 }
 
 html:not([data-theme="light"]) .theme-icon-moon-wrap,
@@ -606,7 +596,7 @@ html:not([data-theme="light"]) .theme-icon-moon-wrap,
 .theme-toggle-dark .theme-icon-moon-wrap {
     color: #ffffff;
     opacity: 1;
-    transform: scale(1.08);
+    transform: scale(1.08) rotate(45deg);
     filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.7));
 }
 
@@ -615,30 +605,32 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-sun-wrap,
 .theme-toggle-btn:hover.theme-toggle-dark .theme-icon-sun-wrap {
     color: #facc15;
     opacity: 0.95;
-    transform: scale(1.05) rotate(35deg);
+    transform: scale(1.05) rotate(30deg);
     filter: drop-shadow(0 0 6px rgba(250, 204, 21, 0.6));
 }
 
 html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 [data-theme="dark"] .theme-toggle-btn:hover .theme-icon-moon-wrap,
 .theme-toggle-btn:hover.theme-toggle-dark .theme-icon-moon-wrap {
-    transform: scale(1.18) rotate(-15deg);
+    transform: scale(1.15) rotate(55deg);
     filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.9));
 }
 
-/* Switching Spin Animation */
-.theme-toggle-btn.is-switching .theme-icon-sun {
-    animation: themeIconSpin 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+/* Light Mode Icon Specifics fallback */
+[data-theme="light"] .theme-icon-sun-wrap,
+.theme-toggle-light .theme-icon-sun-wrap {
+    color: #ffffff;
+    opacity: 1;
+    transform: scale(1.05) rotate(30deg);
+    filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
 }
 
-.theme-toggle-btn.is-switching .theme-icon-moon {
-    animation: themeIconSpin 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes themeIconSpin {
-    0% { transform: scale(0.7) rotate(0deg); }
-    50% { transform: scale(1.25) rotate(180deg); }
-    100% { transform: scale(1) rotate(360deg); }
+[data-theme="light"] .theme-icon-moon-wrap,
+.theme-toggle-light .theme-icon-moon-wrap {
+    color: rgba(100, 116, 139, 0.6);
+    opacity: 0.65;
+    transform: scale(0.88) rotate(15deg);
+    filter: none;
 }
 
 /* Logo SVG Badge Stops */
@@ -697,7 +689,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
     border: 1px solid rgba(14, 165, 233, 0.25);
     border-radius: 50px;
     font-size: 0.85rem;
-    font-weight: 500;
+    font-weight: 700;
     color: var(--accent-primary);
     margin-bottom: 1.5rem;
     box-shadow: 0 0 15px rgba(14, 165, 233, 0.1);
@@ -740,12 +732,13 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
     font-size: 1.9rem;
     color: #cbd5e1;
     margin-bottom: 1.5rem;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 .hero-content p {
     font-size: 1.12rem;
     color: var(--text-secondary);
+    font-weight: 500;
     margin-bottom: 2rem;
     max-width: 540px;
     line-height: 1.7;
@@ -780,6 +773,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 8px;
     font-size: 0.82rem;
+    font-weight: 600;
     color: var(--text-secondary);
     transition: var(--transition);
 }
@@ -913,6 +907,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 
 .hud-label {
     font-size: 0.7rem;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.8px;
     color: var(--text-secondary);
@@ -920,7 +915,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 
 .hud-value {
     font-size: 0.85rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-primary);
 }
 
@@ -988,7 +983,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 
 .tech-tooltip-tag {
     font-size: 0.65rem;
-    font-weight: 600;
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.6px;
     padding: 0.15rem 0.45rem;
@@ -1000,6 +995,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 
 .tech-tooltip-desc {
     font-size: 0.76rem;
+    font-weight: 500;
     color: #94a3b8;
     line-height: 1.35;
 }
@@ -1010,6 +1006,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
     left: 50%;
     transform: translateX(-50%);
     font-size: 0.75rem;
+    font-weight: 600;
     color: rgba(148, 163, 184, 0.7);
     background: rgba(10, 15, 22, 0.6);
     padding: 0.3rem 0.8rem;
@@ -1121,13 +1118,14 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 
 .about-quick-info h3 {
     font-size: 1.25rem;
+    font-weight: 700;
     margin-bottom: 0.25rem;
 }
 
 .about-quick-info .role {
     font-size: 0.85rem;
     color: var(--accent-primary);
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 1rem;
 }
 
@@ -1139,6 +1137,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 
 .quick-tags span {
     font-size: 0.78rem;
+    font-weight: 600;
     padding: 0.25rem 0.65rem;
     border-radius: 50px;
     background: rgba(255, 255, 255, 0.05);
@@ -1156,11 +1155,13 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
     margin-bottom: 1.2rem;
     color: var(--text-secondary);
     font-size: 1.05rem;
+    font-weight: 500;
     line-height: 1.7;
 }
 
 .about-text strong {
     color: var(--text-primary);
+    font-weight: 700;
 }
 
 .about-stats {
@@ -1224,11 +1225,13 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 .stat-box h3 {
     margin-bottom: 0.5rem;
     font-size: 1.3rem;
+    font-weight: 700;
 }
 
 .stat-box p {
     color: var(--text-secondary);
     font-size: 0.95rem;
+    font-weight: 600;
     margin: 0;
 }
 
@@ -1364,6 +1367,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 
 .skill-card-header h3 {
     font-size: 1.45rem;
+    font-weight: 700;
     margin-bottom: 0.3rem;
     color: var(--text-primary);
     transition: color 0.3s ease;
@@ -1375,6 +1379,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 
 .skill-category-desc {
     font-size: 0.88rem;
+    font-weight: 500;
     color: var(--text-secondary);
     line-height: 1.5;
     margin: 0;
@@ -1399,7 +1404,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 10px;
     font-size: 0.86rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--text-primary);
     transition: transform 0.3s var(--ease-spring), background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
     cursor: default;
@@ -1416,6 +1421,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
     background: rgba(14, 165, 233, 0.08);
     border-color: rgba(14, 165, 233, 0.25);
     color: #e2e8f0;
+    font-weight: 700;
 }
 
 .skill-chip:hover {
@@ -1450,7 +1456,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 
 .telemetry-tag {
     font-size: 0.7rem;
-    font-weight: 700;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.8px;
     color: var(--accent-primary);
@@ -1459,7 +1465,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 .telemetry-val {
     font-size: 0.72rem;
     color: var(--accent-secondary);
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .telemetry-dots-chain {
@@ -1467,6 +1473,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
     align-items: center;
     gap: 0.6rem;
     font-size: 0.75rem;
+    font-weight: 600;
     color: var(--text-secondary);
 }
 
@@ -1476,7 +1483,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
     padding: 0.25rem 0.6rem;
     border-radius: 6px;
     color: #38bdf8;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .t-sep {
@@ -1496,7 +1503,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 .section-subtitle {
     display: inline-block;
     font-size: 0.8rem;
-    font-weight: 700;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 2px;
     color: var(--accent-primary);
@@ -1510,6 +1517,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 .section-intro {
     color: var(--text-secondary);
     font-size: 1.05rem;
+    font-weight: 500;
     margin-top: 1rem;
 }
 
@@ -1594,7 +1602,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
     border: 1px solid rgba(14, 165, 233, 0.4);
     border-radius: 50px;
     font-size: 0.78rem;
-    font-weight: 600;
+    font-weight: 700;
     color: #38bdf8;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4), 0 0 15px rgba(14, 165, 233, 0.2);
     backdrop-filter: blur(12px);
@@ -1618,6 +1626,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
     left: 25px;
     border-color: rgba(234, 179, 8, 0.5);
     color: #facc15;
+    font-weight: 700;
 }
 
 .trophy-icon {
@@ -1635,6 +1644,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 
 .bento-card-info h3 {
     font-size: 1.55rem;
+    font-weight: 700;
     margin-bottom: 0.8rem;
     color: var(--text-primary);
     transition: color 0.3s ease;
@@ -1646,13 +1656,14 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 
 .bento-subtitle {
     font-size: 1.05rem;
-    font-weight: 400;
+    font-weight: 500;
     color: var(--text-secondary);
 }
 
 .bento-card-info p {
     color: var(--text-secondary);
     font-size: 0.96rem;
+    font-weight: 500;
     line-height: 1.7;
     margin-bottom: 1.6rem;
 }
@@ -1681,6 +1692,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
     background: rgba(14, 165, 233, 0.15);
     border-color: rgba(14, 165, 233, 0.4);
     color: var(--accent-primary);
+    font-weight: 700;
 }
 
 /* Metrics Counter Grid */
@@ -1712,6 +1724,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 .metric-lbl {
     font-size: 0.72rem;
     color: var(--text-secondary);
+    font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     margin-top: 0.2rem;
@@ -1854,6 +1867,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 
 .stat-pill .lbl {
     font-size: 0.7rem;
+    font-weight: 700;
     color: var(--text-secondary);
     text-transform: uppercase;
 }
@@ -1874,7 +1888,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 .confidence-meter span {
     font-size: 0.72rem;
     color: var(--accent-secondary);
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .unlocked-toast {
@@ -1887,7 +1901,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    font-weight: 500;
+    font-weight: 700;
 }
 
 /* Card 3 LangGraph Terminal Visual */
@@ -1960,7 +1974,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 
 .pipeline-title {
     font-size: 0.76rem;
-    font-weight: 700;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.8px;
     color: var(--accent-primary);
@@ -2047,6 +2061,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 
 .step-desc span {
     font-size: 0.7rem;
+    font-weight: 500;
     color: #94a3b8;
     line-height: 1.35;
     display: block;
@@ -2083,7 +2098,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
     padding: 0.2rem 0.6rem;
     border-radius: 20px;
     border: 1px solid rgba(16, 185, 129, 0.3);
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .overlapping-insight-badge {
@@ -2133,6 +2148,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 
 .i-sub {
     font-size: 0.68rem;
+    font-weight: 600;
     color: var(--accent-primary);
 }
 
@@ -2151,7 +2167,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
     color: var(--accent-primary);
     border: 1px solid rgba(14, 165, 233, 0.2);
     border-radius: 50px;
-    font-weight: 600;
+    font-weight: 700;
     transition: transform 0.3s var(--ease-spring), background 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
     display: inline-block;
 }
@@ -2193,7 +2209,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 .project-links a {
     color: var(--text-secondary);
     font-size: 0.92rem;
-    font-weight: 500;
+    font-weight: 600;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -2284,18 +2300,21 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 
 .timeline-item h4 {
     font-size: 1.1rem;
+    font-weight: 700;
     margin-bottom: 0.3rem;
 }
 
 .timeline-item .institution {
     color: var(--accent-secondary);
     font-size: 0.9rem;
+    font-weight: 600;
     margin-bottom: 0.2rem;
 }
 
 .timeline-item .date {
     color: var(--text-secondary);
     font-size: 0.85rem;
+    font-weight: 700;
 }
 
 .societies-list {
@@ -2360,11 +2379,13 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
 .society-item h4 {
     margin-bottom: 0.2rem;
     font-size: 1.05rem;
+    font-weight: 700;
 }
 
 .society-item p {
     color: var(--text-secondary);
     font-size: 0.9rem;
+    font-weight: 500;
     margin: 0;
 }
 
@@ -2375,6 +2396,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
     margin: 0 auto 4rem;
     color: var(--text-secondary);
     font-size: 1.1rem;
+    font-weight: 500;
 }
 
 .contact-grid {
@@ -2394,10 +2416,12 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
     align-items: center;
     gap: 1.2rem;
     font-size: 1.1rem;
+    font-weight: 600;
     overflow-wrap: break-word;
 }
 
 .info-item a {
+    font-weight: 600;
     overflow-wrap: anywhere;
     word-break: break-word;
 }
@@ -2500,6 +2524,7 @@ html:not([data-theme="light"]) .theme-toggle-btn:hover .theme-icon-moon-wrap,
     color: var(--text-primary);
     font-family: var(--font-main);
     font-size: 1rem;
+    font-weight: 500;
     transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -2639,6 +2664,7 @@ footer {
     border-top: var(--border-glass);
     color: var(--text-secondary);
     font-size: 0.9rem;
+    font-weight: 600;
 }
 
 /* Smooth Page Transitions & Scroll Reveal */
