@@ -8,7 +8,7 @@
     <meta name="description" content="Portfolio of Savindu Suranjith Thennakoon, a Full-Stack & AI Engineer.">
     <!-- Immediate Anti-FOUC Theme Initializer -->
     <script>
-        (function() {
+        (function () {
             try {
                 const savedTheme = localStorage.getItem('portfolio-theme');
                 if (savedTheme === 'light' || (!savedTheme && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches)) {
@@ -29,7 +29,8 @@
     <!-- Google Fonts for sleek typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <!-- Three.js for Lightweight Interactive 3D Graphics -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
@@ -93,13 +94,14 @@
                 <li><a href="#education">Education</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li class="theme-toggle-li">
-                    <button type="button" class="theme-toggle-btn" id="theme-toggle" aria-label="Toggle Light and Dark Theme"
-                        title="Toggle Light / Dark Theme">
+                    <button type="button" class="theme-toggle-btn" id="theme-toggle"
+                        aria-label="Toggle Light and Dark Theme" title="Toggle Light / Dark Theme">
                         <span class="theme-toggle-track">
                             <span class="theme-toggle-thumb"></span>
                             <span class="theme-icon-wrap theme-icon-sun-wrap" aria-hidden="true">
-                                <svg class="svg-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg class="svg-icon theme-icon-sun" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
                                     <circle cx="12" cy="12" r="5"></circle>
                                     <line x1="12" y1="1" x2="12" y2="3"></line>
                                     <line x1="12" y1="21" x2="12" y2="23"></line>
@@ -112,8 +114,9 @@
                                 </svg>
                             </span>
                             <span class="theme-icon-wrap theme-icon-moon-wrap" aria-hidden="true">
-                                <svg class="svg-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                    stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <svg class="svg-icon theme-icon-moon" viewBox="0 0 24 24" fill="none"
+                                    stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round">
                                     <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                                 </svg>
                             </span>
@@ -353,11 +356,6 @@
 
                 <!-- 1. Flagship Bento Card: AI & Machine Learning Systems (7 cols) -->
                 <div class="bento-skill-card skill-card-ai-flagship">
-                    <div class="bento-floating-badge badge-top-right">
-                        <span class="pulse-dot"></span>
-                        <span>Flagship Specialization</span>
-                    </div>
-
                     <div class="skill-card-header">
                         <div class="skill-icon-wrap ai-icon-glow">
                             <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -431,34 +429,10 @@
                             <span>Google GenAI / LLMs</span>
                         </div>
                     </div>
-
-                    <!-- Overlapping Mini Pipeline Telemetry -->
-                    <div class="skill-subcard-telemetry">
-                        <div class="telemetry-bar-row">
-                            <span class="telemetry-tag">Autonomous Workflow</span>
-                            <span class="telemetry-val">Deterministic State Machines</span>
-                        </div>
-                        <div class="telemetry-dots-chain">
-                            <span class="t-dot live">User Prompt</span>
-                            <span class="t-sep">→</span>
-                            <span class="t-dot live">Vector Retrieve</span>
-                            <span class="t-sep">→</span>
-                            <span class="t-dot live">Multi-Agent Action</span>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- 2. Web & Mobile Engineering (5 cols) -->
                 <div class="bento-skill-card skill-card-mobile">
-                    <div class="bento-floating-badge badge-top-left">
-                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-                            <line x1="12" y1="18" x2="12.01" y2="18"></line>
-                        </svg>
-                        <span>Cross-Platform</span>
-                    </div>
-
                     <div class="skill-card-header">
                         <div class="skill-icon-wrap mobile-icon-glow">
                             <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -532,16 +506,6 @@
 
                 <!-- 3. Databases & DevOps (5 cols) -->
                 <div class="bento-skill-card skill-card-devops">
-                    <div class="bento-floating-badge badge-top-left">
-                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
-                            <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
-                            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
-                        </svg>
-                        <span>Database & Cloud</span>
-                    </div>
-
                     <div class="skill-card-header">
                         <div class="skill-icon-wrap devops-icon-glow">
                             <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -611,15 +575,6 @@
 
                 <!-- 4. Languages & Core Architecture (7 cols) -->
                 <div class="bento-skill-card skill-card-languages">
-                    <div class="bento-floating-badge badge-top-right">
-                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <polyline points="16 18 22 12 16 6"></polyline>
-                            <polyline points="8 6 2 12 8 18"></polyline>
-                        </svg>
-                        <span>Engineering Foundation</span>
-                    </div>
-
                     <div class="skill-card-header">
                         <div class="skill-icon-wrap lang-icon-glow">
                             <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -698,38 +653,42 @@
     <section id="projects" class="projects section-padding">
         <div class="container">
             <div class="section-header-wrap">
-                <span class="section-subtitle">Selected Engineering Works</span>
+
                 <h2 class="section-title">Featured Projects</h2>
-                <p class="section-intro">Bridging cutting-edge machine learning and applied AI with resilient full-stack
-                    architectures.</p>
             </div>
 
             <div class="bento-project-grid">
 
                 <!-- 1. Primary Flagship Bento Card (7 cols) - Smart Attendance -->
                 <div class="bento-card bento-card-featured-left">
-                    <!-- Overlapping Floating Status Pill -->
-                    <div class="bento-floating-badge badge-top-right">
-                        <span class="pulse-dot"></span>
-                        <span>Two-Phase Biometric Verified</span>
-                    </div>
-
                     <div class="bento-card-inner">
                         <div class="bento-card-info">
-                            <div class="project-tag-wrap">
-                                <span class="project-tag-pill featured-tag">Flagship Architecture</span>
-                                <span class="project-tag-pill">2026 Production</span>
-                            </div>
-                            <h3>Smart Attendance Platform</h3>
-                            <p>An enterprise-grade cross-platform mobile ecosystem and live administrative dashboard.
-                                Engineered with dual-layer face recognition and GPS geofencing verification over a
-                                resilient microservices backend.</p>
+                            <h3>Smart Attendance and Classroom Access Platform</h3>
+                            <ul class="project-bullet-list">
+                                <li><strong>Platform Architecture:</strong> Built an enterprise-grade academic
+                                    attendance platform with a microservices architecture using FastAPI, Next.js, React
+                                    Native, PostgreSQL, and RabbitMQ.</li>
+                                <li><strong>Edge AI &amp; Anti-Spoofing:</strong> Designed an on-device verification
+                                    pipeline leveraging MiniFASNet, facial landmark tracking, and 192D embeddings to
+                                    detect presentation attacks in real time.</li>
+                                <li><strong>Fraud Prevention:</strong> Combined biometric checks with GPS geofencing and
+                                    randomized verification windows to eliminate proxy attendance.</li>
+                                <li><strong>Privacy-by-Design:</strong> Computed vector embeddings directly on-device,
+                                    preventing raw facial imagery or biometric templates from leaving the client.</li>
+                                <li><strong>Concurrency &amp; Scalability:</strong> Offloaded vector matching to
+                                    distributed RabbitMQ message queues for asynchronous processing during high-volume
+                                    check-in bursts.</li>
+                            </ul>
                             <div class="project-tech">
                                 <span>React Native</span>
-                                <span>Node.js / Express</span>
-                                <span>Computer Vision</span>
-                                <span>MongoDB</span>
-                                <span>Docker</span>
+                                <span>Next.js / React</span>
+                                <span>FastAPI</span>
+                                <span>PostgreSQL</span>
+                                <span>RabbitMQ</span>
+                                <span>Supabase</span>
+                                <span>MiniFASNet (Edge AI)</span>
+                                <span>GPS Geofencing</span>
+                                <span>Tailwind CSS</span>
                             </div>
 
                             <div class="project-links">
@@ -746,71 +705,33 @@
                             </div>
                         </div>
 
-                        <!-- Overlapping Visual Showcase Container -->
-                        <div class="bento-card-visual visual-attendance">
-                            <div class="visual-glass-preview">
-                                <div class="preview-header">
-                                    <span class="dot red"></span>
-                                    <span class="dot yellow"></span>
-                                    <span class="dot green"></span>
-                                    <span class="preview-title">biometric-auth.ts</span>
-                                </div>
-                                <div class="preview-code-block">
-                                    <code><span class="c-kw">const</span> <span class="c-fn">verifyBiometricScan</span> = <span class="c-kw">async</span> (stream) =&gt; {</code>
-                                    <code>  <span class="c-kw">const</span> face = <span class="c-kw">await</span> cv.extract(stream);</code>
-                                    <code>  <span class="c-kw">const</span> geo = <span class="c-kw">await</span> gps.verifyRadius();</code>
-                                    <code>  <span class="c-kw">return</span> microservice.authorize({ face, geo });</code>
-                                    <code>};</code>
-                                </div>
-
-                            </div>
-                        </div>
                     </div>
                 </div>
 
                 <!-- 2. Vertical Bento Card (5 cols) - FitLock AI -->
                 <div class="bento-card bento-card-tall-right">
-                    <!-- Overlapping Floating Pose Pill -->
-                    <div class="bento-floating-badge badge-top-left">
-                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="9 12 11 14 15 10"></polyline>
-                        </svg>
-                        <span>MediaPipe Real-time Pose</span>
-                    </div>
-
                     <div class="bento-card-inner vertical-layout">
                         <div class="bento-card-info">
-                            <div class="project-tag-wrap">
-                                <span class="project-tag-pill">Mobile AI & Productivity</span>
-                            </div>
                             <h3>FitLock <span class="bento-subtitle">(AI App-Locker)</span></h3>
-                            <p>Locks distracting social applications until physical workouts are performed. Uses
-                                on-device MediaPipe Pose estimation to count exercise reps with zero cloud latency.</p>
-
-                            <!-- Overlapping Workout Tracker Visual -->
-                            <div class="fitlock-preview-card">
-                                <div class="fitlock-stat-row">
-                                    <div class="stat-pill">
-                                        <span class="num">15 / 15</span>
-                                        <span class="lbl">Squats Detected</span>
-                                    </div>
-                                    <div class="confidence-meter">
-                                        <div class="meter-bar"></div>
-                                        <span>98.6% Pose Confidence</span>
-                                    </div>
-                                </div>
-                                <div class="unlocked-toast">
-                                    <span class="unlock-icon">🔓</span> App unlocked for 30 minutes!
-                                </div>
-                            </div>
+                            <ul class="project-bullet-list">
+                                <li>Developed FitLock, a cross-platform digital wellbeing application that locks target
+                                    apps behind physical exercise requirements (squats, push-ups, jumping jacks).</li>
+                                <li><strong>On-Device Computer Vision:</strong> Integrated MediaPipe Pose via HTML5
+                                    Canvas for client-side, zero-latency repetition counting and joint angle calculation
+                                    without streaming or storing user video.</li>
+                                <li><strong>Monetization &amp; Privacy Compliance:</strong> Integrated Google AdMob
+                                    alongside the Google User Messaging Platform (UMP) SDK to handle monetization with
+                                    full GDPR consent compliance.</li>
+                            </ul>
 
                             <div class="project-tech">
+                                <span>React Native</span>
                                 <span>React</span>
-                                <span>Tailwind CSS</span>
+                                <span>Vite</span>
                                 <span>Capacitor</span>
                                 <span>MediaPipe Pose</span>
+                                <span>Tailwind CSS</span>
+                                <span>Google AdMob &amp; UMP</span>
                             </div>
 
                             <div class="project-links">
@@ -831,46 +752,35 @@
 
                 <!-- 3. Cybernetic Terminal Bento Card (5 cols) - HackerRank AI Support Agent -->
                 <div class="bento-card bento-card-terminal">
-                    <!-- Overlapping Global Rank Trophy Badge -->
-                    <div class="bento-floating-badge badge-trophy">
-                        <span class="trophy-icon">🏆</span>
-                        <span>Global Rank #81 / 12,000+</span>
-                    </div>
-
                     <div class="bento-card-inner vertical-layout">
                         <div class="bento-card-info">
-                            <div class="project-tag-wrap">
-                                <span class="project-tag-pill">Autonomous LLM Agent</span>
-                            </div>
-                            <h3>HackerRank AI Support Agent</h3>
-                            <p>Terminal-driven autonomous support engineer automating enterprise ticket triage, query
-                                deduplication, and code debugging via deterministic state graphs.</p>
-
-                            <!-- Overlapping State Machine Terminal Window -->
-                            <div class="langgraph-terminal-window">
-                                <div class="term-bar">
-                                    <span class="term-dot"></span>
-                                    <span class="term-dot"></span>
-                                    <span class="term-dot"></span>
-                                    <span class="term-title">LangGraph Agent State Machine</span>
-                                </div>
-                                <div class="term-content">
-                                    <div class="term-line"><span class="t-prompt">$</span> langgraph run triage_agent
-                                    </div>
-                                    <div class="term-line success"><span class="t-node">[Ingest]</span> Vector search:
-                                        ChromaDB Top-5 matches</div>
-                                    <div class="term-line info"><span class="t-node">[Decision]</span> Deterministic
-                                        Router: Severity Critical</div>
-                                    <div class="term-line final"><span class="t-node">[Resolved]</span> Ticket
-                                        Auto-Triaged in 480ms</div>
-                                </div>
-                            </div>
+                            <h3>HackerRank Orchestrate AI Agent <span class="bento-subtitle">(Global Rank #81 / 1,400+
+                                    Submissions)</span></h3>
+                            <ul class="project-bullet-list">
+                                <li><strong>Deterministic State Machine:</strong> Built a multi-node LangGraph workflow
+                                    orchestrating classification, safety checks, policy routing, and ticket resolution
+                                    across HackerRank, Claude, and Visa domains.</li>
+                                <li><strong>Local RAG Pipeline:</strong> Indexed multi-domain support corpora into an
+                                    embedded ChromaDB using HuggingFace all-MiniLM-L6-v2 embeddings, ensuring grounded,
+                                    hallucination-free retrieval without external web dependencies.</li>
+                                <li><strong>Type-Safe Routing &amp; Structured Output:</strong> Utilized Google
+                                    Generative AI paired with Pydantic schema models
+                                    (<code>.with_structured_output</code>) to enforce strict CSV classification and
+                                    triage decision compliance.</li>
+                                <li><strong>Resilience &amp; Concurrency:</strong> Designed an asynchronous processing
+                                    engine using <code>asyncio.Semaphore</code> and staggered scheduling alongside
+                                    Tenacity exponential retry policies to handle high ticket volume and transient API
+                                    rate limits.</li>
+                            </ul>
 
                             <div class="project-tech">
                                 <span>Python</span>
                                 <span>LangGraph</span>
-                                <span>ChromaDB</span>
                                 <span>Google GenAI</span>
+                                <span>ChromaDB</span>
+                                <span>HuggingFace (all-MiniLM-L6-v2)</span>
+                                <span>Pydantic</span>
+                                <span>Asyncio</span>
                             </div>
 
                             <div class="project-links">
@@ -891,46 +801,17 @@
 
                 <!-- 4. Interactive Data Bento Card (7 cols) - PrajaNavigator (AI Insight Platform) -->
                 <div class="bento-card bento-card-rag-wide">
-                    <!-- Overlapping Floating Pipeline Badge -->
-                    <div class="bento-floating-badge badge-top-right">
-                        <span class="pulse-dot"></span>
-                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                            <circle cx="12" cy="12" r="3.5"></circle>
-                        </svg>
-                        <span>Multi-Modal RAG & Vision Intelligence</span>
-                    </div>
-
                     <div class="bento-card-inner">
                         <div class="bento-card-info">
-                            <div class="project-tag-wrap">
-                                <span class="project-tag-pill featured-tag">Multi-Modal AI & Vision</span>
-                                <span class="project-tag-pill">June 2026</span>
-                                <span class="project-tag-pill">Dual-Role Platform</span>
-                                <span class="project-tag-pill">Docker Containerized</span>
-                            </div>
                             <h3>PrajaNavigator <span class="bento-subtitle">(AI Insight Platform)</span></h3>
-                            <p>Engineered an enterprise-grade Retrieval-Augmented Generation (RAG) system integrated
-                                with computer vision pipelines to ingest and analyze complex tabular, statistical, and
-                                document datasets. Delivers actionable intelligence through specialized user and
-                                administrative dashboards with a Python backend and containerized Docker Compose
-                                deployment.</p>
-
-                            <div class="project-metrics-grid">
-                                <div class="metric-item">
-                                    <span class="metric-val">&lt; 350ms</span>
-                                    <span class="metric-lbl">Hybrid RAG Latency</span>
-                                </div>
-                                <div class="metric-item">
-                                    <span class="metric-val">Dual UI</span>
-                                    <span class="metric-lbl">User & Admin Portals</span>
-                                </div>
-                                <div class="metric-item">
-                                    <span class="metric-val">100%</span>
-                                    <span class="metric-lbl">Dockerized Stack</span>
-                                </div>
-                            </div>
+                            <ul class="project-bullet-list">
+                                <li><strong>System Overview:</strong> Engineered a full-stack, multi-agent public
+                                    administration platform to streamline citizen services via multimodal OCR
+                                    verification, pre-counter readiness scoring, and automated form generation.</li>
+                                <li><strong>Hierarchical RAG Architecture:</strong> Designed a 3-layer Hierarchical
+                                    Retrieval-Augmented Generation (RAG) engine incorporating automated conflict
+                                    resolution and multi-agent workflow orchestration with offline fallback modes.</li>
+                            </ul>
 
                             <div class="rag-pipeline-container">
                                 <div class="rag-pipeline-header">
@@ -996,12 +877,12 @@
                             </div>
                             <div class="project-tech">
                                 <span>Python</span>
+                                <span>Hierarchical RAG</span>
+                                <span>Computer Vision / OCR</span>
+                                <span>Multi-Agent Systems</span>
                                 <span>React</span>
                                 <span>Tailwind CSS</span>
-                                <span>Computer Vision / OCR</span>
-                                <span>RAG Embeddings</span>
                                 <span>Docker Compose</span>
-                                <span>PostgreSQL</span>
                             </div>
 
                             <div class="project-links">
