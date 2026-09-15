@@ -349,14 +349,15 @@ function initHero3DCanvas() {
     const outerRadius = 1.95;
     const outerGeometry = new THREE.IcosahedronGeometry(outerRadius, 2);
     
-    // Wireframe Mesh (Titanium dark graphite wireframe)
+    // Wireframe Mesh (Dark Gray Cyber Mesh)
     const wireMaterial = new THREE.MeshStandardMaterial({
-        color: 0x272b38,
+        color: 0x475569, // Cool dark gray
         wireframe: true,
         transparent: true,
-        opacity: 0.42,
-        roughness: 0.3,
-        metalness: 0.8
+        opacity: 0.48,
+        roughness: 0.45,
+        metalness: 0.25,
+        emissive: 0x1e2430
     });
     const outerMesh = new THREE.Mesh(outerGeometry, wireMaterial);
     masterGroup.add(outerMesh);

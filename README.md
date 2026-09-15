@@ -16,7 +16,7 @@ portfolio/
 ├── assets/
 │   ├── favicon.svg     # Futuristic monogram site favicon
 │   ├── image.png       # High-resolution profile portrait
-│   └── CV_savindu.pdf  # Downloadable resume
+│   └── savindu's_cv.pdf # Downloadable resume
 └── README.md           # Project documentation
 ```
 
