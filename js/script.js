@@ -21,73 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Instant In-Place Theme Switcher with Fluid Physics
-    function initThemeNavigation() {
-        const themeBtn = document.getElementById('theme-toggle');
-        if (!themeBtn) return;
-
-        function updateButtonAccessibility(theme) {
-            if (theme === 'light') {
-                themeBtn.setAttribute('aria-label', 'Switch to Dark Theme');
-                themeBtn.setAttribute('title', 'Switch to Dark Theme');
-            } else {
-                themeBtn.setAttribute('aria-label', 'Switch to Light Theme');
-                themeBtn.setAttribute('title', 'Switch to Light Theme');
-            }
-        }
-
-        // Initialize button accessibility from current theme
-        const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-        updateButtonAccessibility(currentTheme);
-
-        function triggerThemeSwitch(e) {
-            if (e) e.preventDefault();
-            if (themeBtn.classList.contains('is-switching')) return;
-
-            const current = document.documentElement.getAttribute('data-theme') || 'dark';
-            const nextTheme = current === 'light' ? 'dark' : 'light';
-
-            // Start switching micro-animations
-            themeBtn.classList.add('is-switching');
-            document.documentElement.classList.add('theme-transition');
-
-            // Apply new theme attribute
-            document.documentElement.setAttribute('data-theme', nextTheme);
-            try {
-                localStorage.setItem('portfolio-theme', nextTheme);
-            } catch (err) {}
-
-            updateButtonAccessibility(nextTheme);
-
-            // Clean up animation classes after transition completes
-            setTimeout(() => {
-                themeBtn.classList.remove('is-switching');
-                document.documentElement.classList.remove('theme-transition');
-            }, 500);
-        }
-
-        themeBtn.addEventListener('click', triggerThemeSwitch);
-        themeBtn.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                triggerThemeSwitch(e);
-            }
-        });
-
-        // Listen for OS system theme changes if user hasn't explicitly set a preference
-        if (window.matchMedia) {
-            window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
-                try {
-                    if (!localStorage.getItem('portfolio-theme')) {
-                        const osTheme = e.matches ? 'light' : 'dark';
-                        document.documentElement.setAttribute('data-theme', osTheme);
-                        updateButtonAccessibility(osTheme);
-                    }
-                } catch (err) {}
-            });
-        }
-    }
-
-    initThemeNavigation();
+    // Clean up any legacy saved theme preference to ensure pure dark mode
+    try {
+        localStorage.removeItem('portfolio-theme');
+    } catch (e) {}
 
     // Scroll Progress & Active Nav Scrollspy
     const scrollProgressBar = document.getElementById('scroll-progress');
@@ -172,6 +109,56 @@ document.addEventListener('DOMContentLoaded', () => {
         const initialElements = document.querySelectorAll('.hero .fade-in');
         initialElements.forEach(el => el.classList.add('visible'));
     }, 100);
+
+    // Linear-style dynamic card spotlight tracking (--mouse-x, --mouse-y)
+    const spotlightCards = document.querySelectorAll('.bento-card, .bento-skill-card, .stat-box, .society-item, .about-image-card');
+    spotlightCards.forEach(card => {
+        card.addEventListener('pointermove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            card.style.setProperty('--mouse-x', `${x}px`);
+            card.style.setProperty('--mouse-y', `${y}px`);
+        });
+    });
+
+    // Linear Toast Notification System
+    window.showLinearToast = function(message, icon = '✓') {
+        let container = document.querySelector('.linear-toast-container');
+        if (!container) {
+            container = document.createElement('div');
+            container.className = 'linear-toast-container';
+            document.body.appendChild(container);
+        }
+        const toast = document.createElement('div');
+        toast.className = 'linear-toast';
+        toast.innerHTML = `
+            <div class="linear-toast-icon">${icon}</div>
+            <div class="linear-toast-message">${message}</div>
+        `;
+        container.appendChild(toast);
+        setTimeout(() => {
+            toast.classList.add('hide');
+            setTimeout(() => toast.remove(), 250);
+        }, 3200);
+    };
+
+    // Quick Copy Email functionality
+    document.querySelectorAll('[data-copy-email]').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const email = btn.getAttribute('data-copy-email') || 'savindus.23@cse.mrt.ac.lk';
+            navigator.clipboard.writeText(email).then(() => {
+                if (window.showLinearToast) {
+                    window.showLinearToast(`Copied to clipboard: ${email}`, '✓');
+                }
+            }).catch(() => {
+                if (window.showLinearToast) {
+                    window.showLinearToast(`Email: ${email}`, '📋');
+                }
+            });
+        });
+    });
 
     // Functional Contact Form Submission with Web3Forms & Real-time Validation
     const contactForm = document.getElementById('contactForm');
@@ -362,22 +349,22 @@ function initHero3DCanvas() {
     const outerRadius = 1.95;
     const outerGeometry = new THREE.IcosahedronGeometry(outerRadius, 2);
     
-    // Wireframe Mesh
+    // Wireframe Mesh (Titanium dark graphite wireframe)
     const wireMaterial = new THREE.MeshStandardMaterial({
-        color: 0x0ea5e9, // Cyan
+        color: 0x272b38,
         wireframe: true,
         transparent: true,
-        opacity: 0.38,
-        roughness: 0.2,
+        opacity: 0.42,
+        roughness: 0.3,
         metalness: 0.8
     });
     const outerMesh = new THREE.Mesh(outerGeometry, wireMaterial);
     masterGroup.add(outerMesh);
 
-    // Neural Vertex Nodes (Glowing Points on each vertex)
+    // Neural Vertex Nodes (Navy Blue glowing points)
     const pointsMaterial = new THREE.PointsMaterial({
-        color: 0x38bdf8,
-        size: 0.09,
+        color: 0x2563eb,
+        size: 0.085,
         transparent: true,
         opacity: 0.95,
         blending: THREE.AdditiveBlending
@@ -391,25 +378,25 @@ function initHero3DCanvas() {
 
     const innerGeo = new THREE.OctahedronGeometry(0.9, 0);
     const innerMaterial = new THREE.MeshStandardMaterial({
-        color: 0x10b981, // Emerald
+        color: 0x1d4ed8, // Deep navy blue wireframe
         wireframe: true,
         transparent: true,
-        opacity: 0.75,
+        opacity: 0.70,
         roughness: 0.1,
         metalness: 0.9
     });
     const innerMesh = new THREE.Mesh(innerGeo, innerMaterial);
     coreGroup.add(innerMesh);
 
-    // Inner Crystalline Core (Solid translucent)
+    // Inner Crystalline Core (Deep Navy Core)
     const crystalGeo = new THREE.OctahedronGeometry(0.65, 0);
     const crystalMat = new THREE.MeshPhysicalMaterial({
-        color: 0x0ea5e9,
+        color: 0x1e3a8a,
         transparent: true,
         opacity: 0.5,
         roughness: 0.1,
         metalness: 0.1,
-        transmission: 0.8
+        transmission: 0.85
     });
     const crystalMesh = new THREE.Mesh(crystalGeo, crystalMat);
     coreGroup.add(crystalMesh);
@@ -417,9 +404,9 @@ function initHero3DCanvas() {
     // 4. Gyroscopic Cyber Orbital Rings
     const ring1Geo = new THREE.TorusGeometry(2.55, 0.015, 16, 100);
     const ring1Mat = new THREE.MeshBasicMaterial({
-        color: 0x0ea5e9,
+        color: 0x1d4ed8, // Deep navy blue
         transparent: true,
-        opacity: 0.55
+        opacity: 0.50
     });
     const ring1 = new THREE.Mesh(ring1Geo, ring1Mat);
     ring1.rotation.x = Math.PI / 3;
@@ -428,9 +415,9 @@ function initHero3DCanvas() {
 
     const ring2Geo = new THREE.TorusGeometry(2.95, 0.015, 16, 100);
     const ring2Mat = new THREE.MeshBasicMaterial({
-        color: 0x10b981,
+        color: 0x70b8ff, // Ice cyan
         transparent: true,
-        opacity: 0.45
+        opacity: 0.42
     });
     const ring2 = new THREE.Mesh(ring2Geo, ring2Mat);
     ring2.rotation.x = -Math.PI / 4;
@@ -439,11 +426,11 @@ function initHero3DCanvas() {
 
     // Satellites orbiting on the rings
     const satGeo = new THREE.SphereGeometry(0.055, 12, 12);
-    const satMat1 = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
+    const satMat1 = new THREE.MeshBasicMaterial({ color: 0x3b82f6 });
     const sat1 = new THREE.Mesh(satGeo, satMat1);
     masterGroup.add(sat1);
 
-    const satMat2 = new THREE.MeshBasicMaterial({ color: 0x34d399 });
+    const satMat2 = new THREE.MeshBasicMaterial({ color: 0x70b8ff });
     const sat2 = new THREE.Mesh(satGeo, satMat2);
     masterGroup.add(sat2);
 
@@ -479,29 +466,29 @@ function initHero3DCanvas() {
     particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
 
     const particleMaterial = new THREE.PointsMaterial({
-        color: 0x7dd3fc,
+        color: 0x3b82f6,
         size: 0.045,
         transparent: true,
-        opacity: 0.7,
+        opacity: 0.65,
         blending: THREE.AdditiveBlending
     });
 
     const particleSystem = new THREE.Points(particleGeometry, particleMaterial);
     masterGroup.add(particleSystem);
 
-    // 6. Dynamic Colored Lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.75);
+    // 6. Dynamic Colored Lighting (Navy & Cyan Palette)
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.85);
     scene.add(ambientLight);
 
-    const cyanLight = new THREE.PointLight(0x0ea5e9, 3.5, 30);
+    const cyanLight = new THREE.PointLight(0x1d4ed8, 3.8, 30); // Key light: Deep Navy Blue
     cyanLight.position.set(5, 4, 5);
     scene.add(cyanLight);
 
-    const emeraldLight = new THREE.PointLight(0x10b981, 3.0, 30);
+    const emeraldLight = new THREE.PointLight(0x70b8ff, 2.5, 30); // Fill light: Ice cyan
     emeraldLight.position.set(-5, -4, 4);
     scene.add(emeraldLight);
 
-    const purpleLight = new THREE.PointLight(0x818cf8, 2.0, 30);
+    const purpleLight = new THREE.PointLight(0x2563eb, 2.8, 30); // Rim light: Royal Navy Blue
     purpleLight.position.set(0, 5, -4);
     scene.add(purpleLight);
 
@@ -550,18 +537,18 @@ function initHero3DCanvas() {
         // Outer Glow Halo
         ctx.save();
         ctx.shadowColor = tech.color;
-        ctx.shadowBlur = 24;
-        ctx.fillStyle = 'rgba(15, 23, 42, 0.92)';
+        ctx.shadowBlur = 20;
+        ctx.fillStyle = 'rgba(8, 9, 10, 0.95)';
         ctx.beginPath();
         ctx.arc(cx, cy, r, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
 
-        // Glassmorphic Inner Radial Gradient
+        // Obsidian Glass Inner Radial Gradient
         const grad = ctx.createRadialGradient(cx, cy - 20, 10, cx, cy, r);
-        grad.addColorStop(0, 'rgba(30, 41, 59, 0.95)');
-        grad.addColorStop(0.7, 'rgba(15, 23, 42, 0.96)');
-        grad.addColorStop(1, 'rgba(10, 15, 25, 0.98)');
+        grad.addColorStop(0, 'rgba(26, 29, 38, 0.95)');
+        grad.addColorStop(0.7, 'rgba(14, 16, 21, 0.96)');
+        grad.addColorStop(1, 'rgba(8, 9, 10, 0.98)');
         ctx.fillStyle = grad;
         ctx.beginPath();
         ctx.arc(cx, cy, r - 2, 0, Math.PI * 2);
@@ -569,12 +556,12 @@ function initHero3DCanvas() {
 
         // Glowing Cyber Rim Border
         ctx.strokeStyle = tech.color;
-        ctx.lineWidth = 4.5;
+        ctx.lineWidth = 3.5;
         ctx.stroke();
 
         // Inner Tech-Corner Accents
-        ctx.strokeStyle = 'rgba(255, 255, 255, 0.35)';
-        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+        ctx.lineWidth = 1.5;
         ctx.beginPath();
         ctx.arc(cx, cy, r - 8, -Math.PI * 0.25, Math.PI * 0.25);
         ctx.stroke();
@@ -588,7 +575,7 @@ function initHero3DCanvas() {
         drawTechVectorGlyph(ctx, tech.id, tech.color);
         ctx.restore();
 
-        // Label Pill Box below Badge
+        // Label Pill Box below Badge (Linear Obsidian Style)
         const pillY = 202;
         const pillW = 140;
         const pillH = 34;
@@ -598,18 +585,18 @@ function initHero3DCanvas() {
         ctx.save();
         ctx.shadowColor = 'rgba(0,0,0,0.6)';
         ctx.shadowBlur = 10;
-        ctx.fillStyle = 'rgba(10, 15, 22, 0.94)';
+        ctx.fillStyle = 'rgba(10, 11, 14, 0.96)';
         ctx.beginPath();
         ctx.roundRect ? ctx.roundRect(pillX, pillY, pillW, pillH, pillR) : ctx.rect(pillX, pillY, pillW, pillH);
         ctx.fill();
 
-        ctx.strokeStyle = tech.color;
-        ctx.lineWidth = 2;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.12)';
+        ctx.lineWidth = 1.5;
         ctx.stroke();
 
         // Label Typography
-        ctx.font = '700 17px Inter, -apple-system, sans-serif';
-        ctx.fillStyle = '#f8fafc';
+        ctx.font = '600 14px "JetBrains Mono", Inter, sans-serif';
+        ctx.fillStyle = '#ededed';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(tech.shortName, cx, pillY + pillH / 2 + 1);

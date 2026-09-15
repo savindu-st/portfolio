@@ -10,10 +10,9 @@ A modern, high-performance, and visually captivating developer portfolio showcas
 portfolio/
 ├── index.html          # Main single-page application & content
 ├── css/
-│   ├── style.css       # Core design tokens, layout & dark theme
-│   └── light.css       # Scoped high-contrast light theme overrides
+│   └── style.css       # Core design tokens, layout & Linear obsidian theme
 ├── js/
-│   └── script.js       # Dynamic interactions, 3D Three.js canvas & theme switching
+│   └── script.js       # Dynamic interactions, 3D Three.js canvas & UI physics
 ├── assets/
 │   ├── favicon.svg     # Futuristic monogram site favicon
 │   ├── image.png       # High-resolution profile portrait
@@ -24,8 +23,7 @@ portfolio/
 ## ✨ Features
 
 - 🌌 **Interactive 3D Graphics**: Built-in Three.js dynamic canvas background responding to cursor motion and scroll.
-- 🌓 **Instant In-Place Theme Switching**: Seamless toggle between Dark & Light themes with fluid physics and 0ms flash.
-- 🎨 **Modern Dark Glassmorphism**: Sleek typography, glowing accents, vibrant gradient borders, and micro-interactions.
+- 🎨 **Linear Obsidian Aesthetics**: Sleek typography, glowing accents, vibrant gradient borders, and micro-interactions.
 - 💼 **Interactive Project Showcase**: Dynamic filtering by category, project cards with hover effects, and interactive preview modals.
 - 🛠️ **Skills & Tech Stack**: Categorized skill pills and interactive proficiency breakdowns.
 - 📜 **Timeline & Education**: Structured milestones highlighting academic achievements, certifications, and experience.
