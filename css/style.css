@@ -734,7 +734,7 @@ ul {
 .hero-3d-wrapper {
     flex: 1;
     position: relative;
-    height: 520px;
+    height: 560px;
     min-width: 320px;
     display: flex;
     justify-content: center;

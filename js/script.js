@@ -330,7 +330,7 @@ function initHero3DCanvas() {
     let height = container.clientHeight || 500;
 
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 1000);
-    camera.position.z = 7.2;
+    camera.position.z = width < 480 ? 9.6 : (width < 768 ? 9.0 : 8.6);
 
     const renderer = new THREE.WebGLRenderer({
         canvas: canvas,
@@ -1044,6 +1044,7 @@ function initHero3DCanvas() {
         
         if (newWidth > 0 && newHeight > 0) {
             camera.aspect = newWidth / newHeight;
+            camera.position.z = newWidth < 480 ? 9.6 : (newWidth < 768 ? 9.0 : 8.6);
             camera.updateProjectionMatrix();
             renderer.setSize(newWidth, newHeight);
             renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
