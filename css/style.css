@@ -1483,6 +1483,17 @@ ul {
 }
 
 /* Asymmetric Grid Spans */
+.bento-card-hero {
+    grid-column: span 12;
+    background: linear-gradient(135deg, rgba(14, 20, 32, 0.9) 0%, rgba(10, 15, 24, 0.95) 100%);
+    border-color: rgba(112, 184, 255, 0.2);
+}
+
+.bento-card-hero:hover {
+    border-color: rgba(112, 184, 255, 0.4);
+    box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.7), 0 0 28px rgba(37, 99, 235, 0.14), var(--inset-specular);
+}
+
 .bento-card-featured-left {
     grid-column: span 7;
 }
@@ -2035,6 +2046,46 @@ ul {
     color: var(--text-secondary);
 }
 
+/* CivicGuard Custom Telemetry & Pulse Indicator */
+.civicguard-metrics {
+    grid-template-columns: repeat(4, 1fr);
+    margin-bottom: 1.4rem;
+}
+
+@media (max-width: 768px) {
+    .civicguard-metrics {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .civicguard-metrics {
+        grid-template-columns: 1fr;
+    }
+}
+
+.pulse-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--status-emerald, #10b981);
+    box-shadow: 0 0 8px var(--status-emerald, #10b981);
+    display: inline-block;
+    flex-shrink: 0;
+    animation: livePulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes livePulse {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.35;
+        transform: scale(0.85);
+    }
+}
+
 /* Tech Pills inside Bento Cards */
 .project-tech {
     display: flex;
@@ -2133,6 +2184,7 @@ ul {
         gap: 2rem;
     }
 
+    .bento-card-hero,
     .bento-card-featured-left,
     .bento-card-tall-right,
     .bento-card-terminal,

@@ -57,7 +57,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
     <link rel="alternate icon" href="assets/favicon.svg">
-    <link rel="stylesheet" href="css/style.css?v=2.3">
+    <link rel="stylesheet" href="css/style.css?v=2.4">
     <!-- Google Fonts for sleek typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -664,7 +664,146 @@
 
             <div class="bento-project-grid">
 
-                <!-- 1. Primary Flagship Bento Card (7 cols) - Smart Attendance -->
+                <!-- 1. Hero Flagship Bento Card (12 cols) - CivicGuard Emergency Intelligence Platform -->
+                <div class="bento-card bento-card-hero">
+
+                    <div class="bento-card-inner">
+                        <div class="bento-card-info">
+                            <h3>CivicGuard <span class="bento-subtitle">(Disaster Response &amp; Emergency Intelligence
+                                    Platform)</span></h3>
+                            <ul class="project-bullet-list">
+                                <li><strong>Core Functionality &amp; Architecture:</strong> Built a nationwide disaster
+                                    response platform utilizing an event-driven microservices architecture (Node.js,
+                                    FastAPI, Kong Gateway, React 18) and PostGIS to automate incident triage and
+                                    coordinate 250 tactical field squads across 25 simulated administrative districts.
+                                </li>
+                                <li><strong>Technical Depth / Engineering Challenge:</strong> Implemented a 5-signal
+                                    hybrid verification engine by coupling Gemini 3.5 Flash-Lite multimodal reasoning
+                                    with YOLOv8 spatial telemetry and PostGIS spatial clustering, evaluating citizen
+                                    hazard reports under a 1.5s inference SLA and validating them against live
+                                    hydrological sensor feeds.</li>
+                                <li><strong>Concurrency &amp; Systems:</strong> Prevented race-condition over-allocation
+                                    across emergency shelters during evacuation surges by designing an atomic bed
+                                    reservation engine using PostgreSQL transactional row-level locking.</li>
+                            </ul>
+
+                            <div class="project-metrics-grid civicguard-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-val">250</span>
+                                    <span class="metric-lbl">Tactical Squads Coordinated</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-val">25</span>
+                                    <span class="metric-lbl">Administrative Districts</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-val">&lt; 1.5s</span>
+                                    <span class="metric-lbl">Inference SLA</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-val">Row-Level</span>
+                                    <span class="metric-lbl">Atomic PostgreSQL Locking</span>
+                                </div>
+                            </div>
+
+                            <div class="rag-pipeline-container civicguard-pipeline">
+                                <div class="rag-pipeline-header">
+                                    <span class="pipeline-title">
+                                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                                        </svg>
+                                        5-Signal Hybrid Verification &amp; Triage Engine (&lt; 1.5s SLA)
+                                    </span>
+                                </div>
+                                <div class="rag-pipeline-steps">
+                                    <div class="rag-step">
+                                        <div class="step-badge">
+                                            <span class="step-num">01</span>
+                                        </div>
+                                        <div class="step-desc">
+                                            <strong>Multimodal Triage</strong>
+                                            <span>Gemini 3.5 Flash-Lite scene reasoning</span>
+                                        </div>
+                                    </div>
+                                    <div class="rag-step-arrow">→</div>
+                                    <div class="rag-step">
+                                        <div class="step-badge">
+                                            <span class="step-num">02</span>
+                                        </div>
+                                        <div class="step-desc">
+                                            <strong>Spatial Telemetry</strong>
+                                            <span>YOLOv8 hazard &amp; object detection</span>
+                                        </div>
+                                    </div>
+                                    <div class="rag-step-arrow">→</div>
+                                    <div class="rag-step">
+                                        <div class="step-badge">
+                                            <span class="step-num">03</span>
+                                        </div>
+                                        <div class="step-desc">
+                                            <strong>Spatial Clustering</strong>
+                                            <span>PostGIS geospatial clustering &amp; dedup</span>
+                                        </div>
+                                    </div>
+                                    <div class="rag-step-arrow">→</div>
+                                    <div class="rag-step">
+                                        <div class="step-badge">
+                                            <span class="step-num">04</span>
+                                        </div>
+                                        <div class="step-desc">
+                                            <strong>Hydrological Feeds</strong>
+                                            <span>Live stream sensor telemetry validation</span>
+                                        </div>
+                                    </div>
+                                    <div class="rag-step-arrow">→</div>
+                                    <div class="rag-step step-highlight">
+                                        <div class="step-badge">
+                                            <span class="step-num">05</span>
+                                        </div>
+                                        <div class="step-desc">
+                                            <strong>Atomic Dispatch</strong>
+                                            <span>Row-locked shelter bed lock &amp; deployment</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="project-tech">
+                                <span>TypeScript</span>
+                                <span>Node.js</span>
+                                <span>Express</span>
+                                <span>Python</span>
+                                <span>FastAPI</span>
+                                <span>React 18</span>
+                                <span>PostgreSQL</span>
+                                <span>PostGIS</span>
+                                <span>Supabase</span>
+                                <span>Google Gemini 3.5 Flash-Lite</span>
+                                <span>YOLOv8</span>
+                                <span>Kong API Gateway</span>
+                                <span>Docker Compose</span>
+                                <span>Socket.IO</span>
+                            </div>
+
+                            <div class="project-links">
+                                <a href="https://github.com/savindu-st/CivicGuard" target="_blank"
+                                    rel="noopener noreferrer" class="btn-project-primary">
+                                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path
+                                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                                        </path>
+                                    </svg>
+                                    View Repository (CivicGuard)
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- 2. Primary Flagship Bento Card (7 cols) - Smart Attendance -->
                 <div class="bento-card bento-card-featured-left">
                     <div class="bento-card-inner">
                         <div class="bento-card-info">
@@ -713,7 +852,7 @@
                     </div>
                 </div>
 
-                <!-- 2. Vertical Bento Card (5 cols) - FitLock AI -->
+                <!-- 3. Vertical Bento Card (5 cols) - FitLock AI -->
                 <div class="bento-card bento-card-tall-right">
                     <div class="bento-card-inner vertical-layout">
                         <div class="bento-card-info">
@@ -755,7 +894,7 @@
                     </div>
                 </div>
 
-                <!-- 3. Cybernetic Terminal Bento Card (5 cols) - HackerRank AI Support Agent -->
+                <!-- 4. Cybernetic Terminal Bento Card (5 cols) - HackerRank AI Support Agent -->
                 <div class="bento-card bento-card-terminal">
                     <div class="bento-card-inner vertical-layout">
                         <div class="bento-card-info">
@@ -804,7 +943,7 @@
                     </div>
                 </div>
 
-                <!-- 4. Interactive Data Bento Card (7 cols) - PrajaNavigator (AI Insight Platform) -->
+                <!-- 5. Interactive Data Bento Card (7 cols) - PrajaNavigator (AI Insight Platform) -->
                 <div class="bento-card bento-card-rag-wide">
                     <div class="bento-card-inner">
                         <div class="bento-card-info">
