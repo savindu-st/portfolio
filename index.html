@@ -663,111 +663,16 @@
             </div>
 
             <div class="bento-project-grid">
-
                 <!-- 1. Hero Flagship Bento Card (12 cols) - CivicGuard Emergency Intelligence Platform -->
                 <div class="bento-card bento-card-hero">
-
                     <div class="bento-card-inner">
                         <div class="bento-card-info">
-                            <h3>CivicGuard <span class="bento-subtitle">(Disaster Response &amp; Emergency Intelligence
-                                    Platform)</span></h3>
+                            <h3>CivicGuard <span class="bento-subtitle">(Disaster Response &amp; Emergency Intelligence Platform)</span></h3>
                             <ul class="project-bullet-list">
-                                <li><strong>Core Functionality &amp; Architecture:</strong> Built a nationwide disaster
-                                    response platform utilizing an event-driven microservices architecture (Node.js,
-                                    FastAPI, Kong Gateway, React 18) and PostGIS to automate incident triage and
-                                    coordinate 250 tactical field squads across 25 simulated administrative districts.
-                                </li>
-                                <li><strong>Technical Depth / Engineering Challenge:</strong> Implemented a 5-signal
-                                    hybrid verification engine by coupling Gemini 3.5 Flash-Lite multimodal reasoning
-                                    with YOLOv8 spatial telemetry and PostGIS spatial clustering, evaluating citizen
-                                    hazard reports under a 1.5s inference SLA and validating them against live
-                                    hydrological sensor feeds.</li>
-                                <li><strong>Concurrency &amp; Systems:</strong> Prevented race-condition over-allocation
-                                    across emergency shelters during evacuation surges by designing an atomic bed
-                                    reservation engine using PostgreSQL transactional row-level locking.</li>
+                                <li><strong>Platform Architecture:</strong> Built a nationwide disaster response platform utilizing an event-driven microservices architecture (Node.js, FastAPI, Kong Gateway, React 18) and PostGIS to automate incident triage and coordinate 250 tactical field squads across 25 administrative districts.</li>
+                                <li><strong>5-Signal Hybrid Verification:</strong> Engineered an automated triage engine under a &lt; 1.5s SLA coupling Gemini 3.5 Flash-Lite multimodal reasoning with YOLOv8 spatial telemetry, PostGIS geospatial clustering, and live hydrological sensor feeds.</li>
+                                <li><strong>Concurrency &amp; Systems:</strong> Prevented race-condition over-allocation across evacuation shelters during sudden population surges by designing an atomic bed reservation engine using PostgreSQL transactional row-level locking.</li>
                             </ul>
-
-                            <div class="project-metrics-grid civicguard-metrics">
-                                <div class="metric-item">
-                                    <span class="metric-val">250</span>
-                                    <span class="metric-lbl">Tactical Squads Coordinated</span>
-                                </div>
-                                <div class="metric-item">
-                                    <span class="metric-val">25</span>
-                                    <span class="metric-lbl">Administrative Districts</span>
-                                </div>
-                                <div class="metric-item">
-                                    <span class="metric-val">&lt; 1.5s</span>
-                                    <span class="metric-lbl">Inference SLA</span>
-                                </div>
-                                <div class="metric-item">
-                                    <span class="metric-val">Row-Level</span>
-                                    <span class="metric-lbl">Atomic PostgreSQL Locking</span>
-                                </div>
-                            </div>
-
-                            <div class="rag-pipeline-container civicguard-pipeline">
-                                <div class="rag-pipeline-header">
-                                    <span class="pipeline-title">
-                                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                                        </svg>
-                                        5-Signal Hybrid Verification &amp; Triage Engine (&lt; 1.5s SLA)
-                                    </span>
-                                </div>
-                                <div class="rag-pipeline-steps">
-                                    <div class="rag-step">
-                                        <div class="step-badge">
-                                            <span class="step-num">01</span>
-                                        </div>
-                                        <div class="step-desc">
-                                            <strong>Multimodal Triage</strong>
-                                            <span>Gemini 3.5 Flash-Lite scene reasoning</span>
-                                        </div>
-                                    </div>
-                                    <div class="rag-step-arrow">→</div>
-                                    <div class="rag-step">
-                                        <div class="step-badge">
-                                            <span class="step-num">02</span>
-                                        </div>
-                                        <div class="step-desc">
-                                            <strong>Spatial Telemetry</strong>
-                                            <span>YOLOv8 hazard &amp; object detection</span>
-                                        </div>
-                                    </div>
-                                    <div class="rag-step-arrow">→</div>
-                                    <div class="rag-step">
-                                        <div class="step-badge">
-                                            <span class="step-num">03</span>
-                                        </div>
-                                        <div class="step-desc">
-                                            <strong>Spatial Clustering</strong>
-                                            <span>PostGIS geospatial clustering &amp; dedup</span>
-                                        </div>
-                                    </div>
-                                    <div class="rag-step-arrow">→</div>
-                                    <div class="rag-step">
-                                        <div class="step-badge">
-                                            <span class="step-num">04</span>
-                                        </div>
-                                        <div class="step-desc">
-                                            <strong>Hydrological Feeds</strong>
-                                            <span>Live stream sensor telemetry validation</span>
-                                        </div>
-                                    </div>
-                                    <div class="rag-step-arrow">→</div>
-                                    <div class="rag-step step-highlight">
-                                        <div class="step-badge">
-                                            <span class="step-num">05</span>
-                                        </div>
-                                        <div class="step-desc">
-                                            <strong>Atomic Dispatch</strong>
-                                            <span>Row-locked shelter bed lock &amp; deployment</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
 
                             <div class="project-tech">
                                 <span>TypeScript</span>
@@ -787,15 +692,22 @@
                             </div>
 
                             <div class="project-links">
+                                <button type="button" class="btn-project-details" data-project="civicguard" aria-haspopup="dialog">
+                                    <svg class="svg-icon icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                    <span>Architecture &amp; Details</span>
+                                </button>
                                 <a href="https://github.com/savindu-st/CivicGuard" target="_blank"
-                                    rel="noopener noreferrer" class="btn-project-primary">
+                                    rel="noopener noreferrer" class="btn-project-link">
                                     <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path
                                             d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
                                         </path>
                                     </svg>
-                                    View Repository (CivicGuard)
+                                    View Repository
                                 </a>
                             </div>
                         </div>
@@ -809,19 +721,9 @@
                         <div class="bento-card-info">
                             <h3>Smart Attendance and Classroom Access Platform</h3>
                             <ul class="project-bullet-list">
-                                <li><strong>Platform Architecture:</strong> Built an enterprise-grade academic
-                                    attendance platform with a microservices architecture using FastAPI, Next.js, React
-                                    Native, PostgreSQL, and RabbitMQ.</li>
-                                <li><strong>Edge AI &amp; Anti-Spoofing:</strong> Designed an on-device verification
-                                    pipeline leveraging MiniFASNet, facial landmark tracking, and 192D embeddings to
-                                    detect presentation attacks in real time.</li>
-                                <li><strong>Fraud Prevention:</strong> Combined biometric checks with GPS geofencing and
-                                    randomized verification windows to eliminate proxy attendance.</li>
-                                <li><strong>Privacy-by-Design:</strong> Computed vector embeddings directly on-device,
-                                    preventing raw facial imagery or biometric templates from leaving the client.</li>
-                                <li><strong>Concurrency &amp; Scalability:</strong> Offloaded vector matching to
-                                    distributed RabbitMQ message queues for asynchronous processing during high-volume
-                                    check-in bursts.</li>
+                                <li><strong>Platform Architecture:</strong> Built an enterprise-grade academic attendance platform with a microservices architecture using FastAPI, Next.js, React Native, PostgreSQL, and RabbitMQ.</li>
+                                <li><strong>Edge AI &amp; Anti-Spoofing:</strong> Designed an on-device biometric verification pipeline leveraging MiniFASNet to detect presentation attacks in real time, computing 192D embeddings locally to preserve privacy.</li>
+                                <li><strong>Fraud Prevention &amp; Scalability:</strong> Combined biometric checks with GPS geofencing and randomized verification windows; offloaded vector matching to distributed RabbitMQ message queues for high-volume check-ins.</li>
                             </ul>
                             <div class="project-tech">
                                 <span>React Native</span>
@@ -836,15 +738,22 @@
                             </div>
 
                             <div class="project-links">
+                                <button type="button" class="btn-project-details" data-project="smart-attendance" aria-haspopup="dialog">
+                                    <svg class="svg-icon icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                    <span>Architecture &amp; Details</span>
+                                </button>
                                 <a href="https://github.com/SmartAttendancePlatform-CS3202" target="_blank"
-                                    rel="noopener noreferrer" class="btn-project-primary">
+                                    rel="noopener noreferrer" class="btn-project-link">
                                     <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path
                                             d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
                                         </path>
                                     </svg>
-                                    View Organization / Repository
+                                    View Organization
                                 </a>
                             </div>
                         </div>
@@ -858,14 +767,9 @@
                         <div class="bento-card-info">
                             <h3>FitLock <span class="bento-subtitle">(AI App-Locker)</span></h3>
                             <ul class="project-bullet-list">
-                                <li>Developed FitLock, a cross-platform digital wellbeing application that locks target
-                                    apps behind physical exercise requirements (squats, push-ups, jumping jacks).</li>
-                                <li><strong>On-Device Computer Vision:</strong> Integrated MediaPipe Pose via HTML5
-                                    Canvas for client-side, zero-latency repetition counting and joint angle calculation
-                                    without streaming or storing user video.</li>
-                                <li><strong>Monetization &amp; Privacy Compliance:</strong> Integrated Google AdMob
-                                    alongside the Google User Messaging Platform (UMP) SDK to handle monetization with
-                                    full GDPR consent compliance.</li>
+                                <li><strong>Wellbeing App Lock:</strong> Developed a cross-platform digital wellbeing application that locks target apps behind physical exercise requirements (squats, push-ups, jumping jacks).</li>
+                                <li><strong>On-Device Computer Vision:</strong> Integrated MediaPipe Pose via HTML5 Canvas for client-side, zero-latency repetition counting and joint angle calculation without streaming or storing user video.</li>
+                                <li><strong>Monetization &amp; Privacy:</strong> Integrated Google AdMob alongside Google User Messaging Platform (UMP) SDK to handle monetization with full GDPR consent compliance. Live on Google Play.</li>
                             </ul>
 
                             <div class="project-tech">
@@ -879,15 +783,22 @@
                             </div>
 
                             <div class="project-links">
+                                <button type="button" class="btn-project-details" data-project="fitlock" aria-haspopup="dialog">
+                                    <svg class="svg-icon icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                    <span>Architecture &amp; Details</span>
+                                </button>
                                 <a href="https://play.google.com/store/apps/details?id=com.savindu.fitlock"
-                                    target="_blank" rel="noopener noreferrer">
+                                    target="_blank" rel="noopener noreferrer" class="btn-project-link">
                                     <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <polygon points="5 3 19 12 5 21 5 3"></polygon>
                                         <line x1="5" y1="3" x2="14" y2="15.5"></line>
                                         <line x1="5" y1="21" x2="14" y2="8.5"></line>
                                     </svg>
-                                    View on Google Play
+                                    Google Play
                                 </a>
                             </div>
                         </div>
@@ -898,23 +809,11 @@
                 <div class="bento-card bento-card-terminal">
                     <div class="bento-card-inner vertical-layout">
                         <div class="bento-card-info">
-                            <h3>HackerRank Orchestrate AI Agent <span class="bento-subtitle">(Global Rank #81 / 1,400+
-                                    Submissions)</span></h3>
+                            <h3>HackerRank Orchestrate AI Agent <span class="bento-subtitle">(Global Rank #81 / 1,400+)</span></h3>
                             <ul class="project-bullet-list">
-                                <li><strong>Deterministic State Machine:</strong> Built a multi-node LangGraph workflow
-                                    orchestrating classification, safety checks, policy routing, and ticket resolution
-                                    across HackerRank, Claude, and Visa domains.</li>
-                                <li><strong>Local RAG Pipeline:</strong> Indexed multi-domain support corpora into an
-                                    embedded ChromaDB using HuggingFace all-MiniLM-L6-v2 embeddings, ensuring grounded,
-                                    hallucination-free retrieval without external web dependencies.</li>
-                                <li><strong>Type-Safe Routing &amp; Structured Output:</strong> Utilized Google
-                                    Generative AI paired with Pydantic schema models
-                                    (<code>.with_structured_output</code>) to enforce strict CSV classification and
-                                    triage decision compliance.</li>
-                                <li><strong>Resilience &amp; Concurrency:</strong> Designed an asynchronous processing
-                                    engine using <code>asyncio.Semaphore</code> and staggered scheduling alongside
-                                    Tenacity exponential retry policies to handle high ticket volume and transient API
-                                    rate limits.</li>
+                                <li><strong>Deterministic State Machine:</strong> Built a multi-node LangGraph workflow orchestrating classification, safety checks, policy routing, and ticket resolution across HackerRank, Claude, and Visa domains.</li>
+                                <li><strong>Local RAG Pipeline:</strong> Indexed multi-domain support corpora into an embedded ChromaDB using HuggingFace all-MiniLM-L6-v2 embeddings, ensuring grounded, hallucination-free retrieval without external web dependencies.</li>
+                                <li><strong>Type-Safe Routing &amp; Resilience:</strong> Enforced strict Pydantic structured output models with asynchronous processing via <code>asyncio.Semaphore</code> and Tenacity exponential retry policies.</li>
                             </ul>
 
                             <div class="project-tech">
@@ -922,14 +821,21 @@
                                 <span>LangGraph</span>
                                 <span>Google GenAI</span>
                                 <span>ChromaDB</span>
-                                <span>HuggingFace (all-MiniLM-L6-v2)</span>
+                                <span>HuggingFace</span>
                                 <span>Pydantic</span>
                                 <span>Asyncio</span>
                             </div>
 
                             <div class="project-links">
+                                <button type="button" class="btn-project-details" data-project="hackerrank-orchestrate" aria-haspopup="dialog">
+                                    <svg class="svg-icon icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                    <span>Architecture &amp; Details</span>
+                                </button>
                                 <a href="https://github.com/savindu-st/hackerrank_orchestrate" target="_blank"
-                                    rel="noopener noreferrer">
+                                    rel="noopener noreferrer" class="btn-project-link">
                                     <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path
@@ -947,104 +853,45 @@
                 <div class="bento-card bento-card-rag-wide">
                     <div class="bento-card-inner">
                         <div class="bento-card-info">
-                            <h3>PrajaNavigator <span class="bento-subtitle">(AI Insight Platform)</span></h3>
+                            <h3>PrajaNavigator <span class="bento-subtitle">(AI Public Administration Platform)</span></h3>
                             <ul class="project-bullet-list">
-                                <li><strong>System Overview:</strong> Engineered a full-stack, multi-agent public
-                                    administration platform to streamline citizen services via multimodal OCR
-                                    verification, pre-counter readiness scoring, and automated form generation.</li>
-                                <li><strong>Hierarchical RAG Architecture:</strong> Designed a 3-layer Hierarchical
-                                    Retrieval-Augmented Generation (RAG) engine incorporating automated conflict
-                                    resolution and multi-agent workflow orchestration with offline fallback modes.</li>
+                                <li><strong>Platform Overview:</strong> Engineered a full-stack, multi-agent public administration platform to streamline citizen services via multimodal OCR verification, pre-counter readiness scoring, and automated form generation.</li>
+                                <li><strong>Hierarchical RAG Engine:</strong> Designed a 3-layer Hierarchical RAG system incorporating automated conflict resolution and multi-agent workflow orchestration across statutory acts, ministry circulars, and Grama Niladhari guidelines.</li>
                             </ul>
 
-                            <div class="rag-pipeline-container">
-                                <div class="rag-pipeline-header">
-                                    <span class="pipeline-title">
-                                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-                                        </svg>
-                                        Citizen Service AI Execution Flow (5-Step Pipeline)
-                                    </span>
-                                </div>
-                                <div class="rag-pipeline-steps">
-                                    <div class="rag-step">
-                                        <div class="step-badge">
-                                            <span class="step-num">01</span>
-                                        </div>
-                                        <div class="step-desc">
-                                            <strong>Identify Service</strong>
-                                            <span>Identify government service needed</span>
-                                        </div>
-                                    </div>
-                                    <div class="rag-step-arrow">→</div>
-                                    <div class="rag-step">
-                                        <div class="step-badge">
-                                            <span class="step-num">02</span>
-                                        </div>
-                                        <div class="step-desc">
-                                            <strong>Dynamic MCQs</strong>
-                                            <span>Asks dynamic MCQs to determine specific situation</span>
-                                        </div>
-                                    </div>
-                                    <div class="rag-step-arrow">→</div>
-                                    <div class="rag-step">
-                                        <div class="step-badge">
-                                            <span class="step-num">03</span>
-                                        </div>
-                                        <div class="step-desc">
-                                            <strong>Create Forms</strong>
-                                            <span>Create required forms</span>
-                                        </div>
-                                    </div>
-                                    <div class="rag-step-arrow">→</div>
-                                    <div class="rag-step">
-                                        <div class="step-badge">
-                                            <span class="step-num">04</span>
-                                        </div>
-                                        <div class="step-desc">
-                                            <strong>Document Autofill</strong>
-                                            <span>Autofill using uploaded documents</span>
-                                        </div>
-                                    </div>
-                                    <div class="rag-step-arrow">→</div>
-                                    <div class="rag-step step-highlight">
-                                        <div class="step-badge">
-                                            <span class="step-num">05</span>
-                                        </div>
-                                        <div class="step-desc">
-                                            <strong>Visit Roadmap</strong>
-                                            <span>Create visit roadmap and required document list</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="project-tech">
                                 <span>Python</span>
+                                <span>FastAPI</span>
                                 <span>Hierarchical RAG</span>
-                                <span>Computer Vision / OCR</span>
+                                <span>OCR &amp; Vision</span>
                                 <span>Multi-Agent Systems</span>
-                                <span>React</span>
+                                <span>React 18</span>
                                 <span>Tailwind CSS</span>
                                 <span>Docker Compose</span>
                             </div>
 
                             <div class="project-links">
+                                <button type="button" class="btn-project-details" data-project="prajanavigator" aria-haspopup="dialog">
+                                    <svg class="svg-icon icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="12" y1="5" x2="12" y2="19"></line>
+                                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    </svg>
+                                    <span>Architecture &amp; Details</span>
+                                </button>
                                 <a href="https://github.com/savindu-st/AGENTRIX26-TEAM21-QuadNova" target="_blank"
-                                    rel="noopener noreferrer" class="btn-project-primary">
+                                    rel="noopener noreferrer" class="btn-project-link">
                                     <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                         stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                         <path
                                             d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
                                         </path>
                                     </svg>
-                                    View Repository (AGENTRIX26 QuadNova)
+                                    View Repository
                                 </a>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
@@ -1236,9 +1083,475 @@
         </div>
     </section>
 
+    <!-- Project Deep-Dive Modal Dialog -->
+    <dialog id="projectModal" class="project-modal" closedby="any" aria-labelledby="modalProjectTitle">
+        <div class="modal-dialog-wrapper">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <div class="modal-title-group">
+                    <div class="modal-eyebrow">
+                        <span class="modal-status-dot pulse-indicator"></span>
+                        <span id="modalProjectCategory" class="modal-project-category">SYSTEM ARCHITECTURE DEEP-DIVE</span>
+                    </div>
+                    <h2 id="modalProjectTitle" class="modal-title">CivicGuard</h2>
+                    <p id="modalProjectSubtitle" class="modal-subtitle">Disaster Response &amp; Emergency Intelligence Platform</p>
+                </div>
+                <div class="modal-header-actions">
+                    <a id="modalRepoLink" href="https://github.com/savindu-st/CivicGuard" target="_blank" rel="noopener noreferrer" class="btn-modal-repo">
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                        </svg>
+                        <span id="modalRepoText">View Repository</span>
+                    </a>
+                    <button type="button" class="btn-modal-close" id="modalCloseBtn" aria-label="Close dialog">
+                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Modal Tab Bar -->
+            <div class="modal-tabs-bar" id="modalTabsBar" role="tablist" aria-label="Project detail tabs">
+                <!-- Dynamically updated by JS per active project -->
+            </div>
+
+            <!-- Modal Body Panes -->
+            <div class="modal-body" id="modalBody">
+                <!-- 1. CIVICGUARD PANES -->
+                <div class="project-pane" id="pane-civicguard" data-project="civicguard">
+                    <!-- Tab 1: System Architecture -->
+                    <div class="tab-content active" id="tab-civicguard-arch" role="tabpanel">
+                        <div class="deepdive-section">
+                            <div class="section-title-wrap">
+                                <h4 class="deepdive-heading">Microservices Event-Driven Topology</h4>
+                                <span class="deepdive-badge">Full-Stack System Design</span>
+                            </div>
+                            <p class="deepdive-lead">
+                                CivicGuard decouples emergency intake, AI verification, tactical squad dispatch, and shelter bed allocation across high-throughput containerized microservices. The Kong API Gateway manages routing, token validation, and rate-limiting, while FastAPI handles ingestion telemetry.
+                            </p>
+
+                            <!-- High-Res Diagram Showcase -->
+                            <div class="diagram-showcase-card" data-zoom-src="projects/civicguard/architecture-diagram.png" data-zoom-caption="CivicGuard - System Architecture Topology &amp; Microservices Pipeline">
+                                <div class="diagram-toolbar">
+                                    <span class="diagram-tag">Architecture Diagram</span>
+                                    <button type="button" class="btn-zoom-hint" title="Click to view full screen">
+                                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="11" cy="11" r="8"></circle>
+                                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                            <line x1="11" y1="8" x2="11" y2="14"></line>
+                                            <line x1="8" y1="11" x2="14" y2="11"></line>
+                                        </svg>
+                                        Click to Zoom
+                                    </button>
+                                </div>
+                                <div class="diagram-img-frame">
+                                    <img src="projects/civicguard/architecture-diagram.png" alt="CivicGuard System Architecture Diagram" loading="lazy" />
+                                </div>
+                                <div class="diagram-footer">
+                                    <span class="diagram-caption-text">Figure 1.1: Citizen Intake &rarr; Kong Gateway &rarr; 5-Signal Verification &rarr; Event Broker &rarr; Tactical Squad Dispatch &amp; Atomic Shelter Lock.</span>
+                                </div>
+                            </div>
+
+                            <div class="deepdive-grid two-col">
+                                <div class="deepdive-card">
+                                    <h5>
+                                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                                            <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                                            <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                                            <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                                        </svg>
+                                        Ingestion &amp; Gateway Layer
+                                    </h5>
+                                    <p>Incoming citizen hazard reports and multimedia feeds enter through Kong API Gateway, enforcing strict rate-limiting and TLS termination before reaching the asynchronous FastAPI ingestion services.</p>
+                                </div>
+                                <div class="deepdive-card">
+                                    <h5>
+                                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="12" cy="12" r="10"></circle>
+                                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                                            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                                        </svg>
+                                        Spatial Clustering &amp; Broker
+                                    </h5>
+                                    <p>PostGIS spatial clustering algorithms aggregate concurrent reports originating from identical geographic radii, preventing dispatch duplication and broadcasting verified incidents via Socket.IO.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 2: Tactical Dashboards -->
+                    <div class="tab-content" id="tab-civicguard-dash" role="tabpanel">
+                        <div class="deepdive-section">
+                            <div class="section-title-wrap">
+                                <h4 class="deepdive-heading">Tactical Command Center: 4 Workspaces</h4>
+                                <span class="deepdive-badge">Mission Control Interface</span>
+                            </div>
+                            <p class="deepdive-lead">
+                                The CivicGuard command dashboard coordinates 250 field squads across 25 administrative districts, unifying situational awareness into 4 purpose-built real-time workspaces.
+                            </p>
+
+                            <!-- High-Res Dashboard Showcase -->
+                            <div class="diagram-showcase-card" data-zoom-src="projects/civicguard/4workspaces.png" data-zoom-caption="CivicGuard - 4 Tactical Workspaces Command Dashboard">
+                                <div class="diagram-toolbar">
+                                    <span class="diagram-tag">Command Center Workspaces</span>
+                                    <button type="button" class="btn-zoom-hint" title="Click to view full screen">
+                                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="11" cy="11" r="8"></circle>
+                                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                            <line x1="11" y1="8" x2="11" y2="14"></line>
+                                            <line x1="8" y1="11" x2="14" y2="11"></line>
+                                        </svg>
+                                        Click to Zoom
+                                    </button>
+                                </div>
+                                <div class="diagram-img-frame">
+                                    <img src="projects/civicguard/4workspaces.png" alt="CivicGuard 4 Workspaces Command Dashboard" loading="lazy" />
+                                </div>
+                                <div class="diagram-footer">
+                                    <span class="diagram-caption-text">Figure 1.2: Multi-district command dashboard showcasing live hazard telemetry, tactical squad dispatch, and shelter capacity tracking.</span>
+                                </div>
+                            </div>
+
+                            <div class="workspace-features-list">
+                                <div class="workspace-card">
+                                    <div class="ws-icon">01</div>
+                                    <div class="ws-info">
+                                        <h6>Citizen Hazard Telemetry Feed</h6>
+                                        <p>Real-time intake stream displaying citizen hazard submissions, geo-coordinates, and uploaded imagery.</p>
+                                    </div>
+                                </div>
+                                <div class="workspace-card">
+                                    <div class="ws-icon">02</div>
+                                    <div class="ws-info">
+                                        <h6>Multimodal Incident Triage</h6>
+                                        <p>Live AI verification workspace highlighting Gemini 3.5 Flash-Lite scene classification and YOLOv8 hazard bounding boxes.</p>
+                                    </div>
+                                </div>
+                                <div class="workspace-card">
+                                    <div class="ws-icon">03</div>
+                                    <div class="ws-info">
+                                        <h6>250 Tactical Squad Dispatch</h6>
+                                        <p>Interactive district operational map tracking squad assignments, status, and ETA across 25 administrative zones.</p>
+                                    </div>
+                                </div>
+                                <div class="workspace-card">
+                                    <div class="ws-icon">04</div>
+                                    <div class="ws-info">
+                                        <h6>Shelter Capacity &amp; Evacuation</h6>
+                                        <p>Live bed reservation dashboard backed by PostgreSQL row-level locks to avoid capacity collisions during surges.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 3: Intelligence Engine & Pipeline -->
+                    <div class="tab-content" id="tab-civicguard-triage" role="tabpanel">
+                        <div class="deepdive-section">
+                            <div class="section-title-wrap">
+                                <h4 class="deepdive-heading">5-Signal Hybrid Verification Engine (&lt; 1.5s SLA)</h4>
+                                <span class="deepdive-badge">&lt; 1.5s Inference SLA</span>
+                            </div>
+                            <p class="deepdive-lead">
+                                To combat false alarms, hallucinations, and duplicate citizen reports during crises, CivicGuard couples multimodal neural reasoning with spatial telemetry and hydrological sensor feeds.
+                            </p>
+
+                            <!-- High-Res Engine Showcase -->
+                            <div class="diagram-showcase-card" data-zoom-src="projects/civicguard/intelligence engine.png" data-zoom-caption="CivicGuard - 5-Signal Intelligence &amp; Verification Engine Workflow">
+                                <div class="diagram-toolbar">
+                                    <span class="diagram-tag">Intelligence Engine Architecture</span>
+                                    <button type="button" class="btn-zoom-hint" title="Click to view full screen">
+                                        <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <circle cx="11" cy="11" r="8"></circle>
+                                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                                            <line x1="11" y1="8" x2="11" y2="14"></line>
+                                            <line x1="8" y1="11" x2="14" y2="11"></line>
+                                        </svg>
+                                        Click to Zoom
+                                    </button>
+                                </div>
+                                <div class="diagram-img-frame">
+                                    <img src="projects/civicguard/intelligence engine.png" alt="CivicGuard 5-Signal Intelligence Engine Diagram" loading="lazy" />
+                                </div>
+                                <div class="diagram-footer">
+                                    <span class="diagram-caption-text">Figure 1.3: 5-Signal triage evaluation pipeline integrating Gemini 3.5 Flash-Lite, YOLOv8 telemetry, and PostGIS deduplication.</span>
+                                </div>
+                            </div>
+
+                            <!-- Interactive Pipeline Steps -->
+                            <div class="rag-pipeline-container civicguard-modal-pipeline">
+                                <div class="rag-pipeline-steps">
+                                    <div class="rag-step">
+                                        <div class="step-badge"><span class="step-num">01</span></div>
+                                        <div class="step-desc">
+                                            <strong>Multimodal Triage</strong>
+                                            <span>Gemini 3.5 Flash-Lite scene reasoning &amp; damage severity estimation</span>
+                                        </div>
+                                    </div>
+                                    <div class="rag-step-arrow">&rarr;</div>
+                                    <div class="rag-step">
+                                        <div class="step-badge"><span class="step-num">02</span></div>
+                                        <div class="step-desc">
+                                            <strong>Spatial Telemetry</strong>
+                                            <span>YOLOv8 object bounding boxes (floods, collapses, fires)</span>
+                                        </div>
+                                    </div>
+                                    <div class="rag-step-arrow">&rarr;</div>
+                                    <div class="rag-step">
+                                        <div class="step-badge"><span class="step-num">03</span></div>
+                                        <div class="step-desc">
+                                            <strong>Geospatial Clustering</strong>
+                                            <span>PostGIS clustering &amp; deduplication of concurrent calls</span>
+                                        </div>
+                                    </div>
+                                    <div class="rag-step-arrow">&rarr;</div>
+                                    <div class="rag-step">
+                                        <div class="step-badge"><span class="step-num">04</span></div>
+                                        <div class="step-desc">
+                                            <strong>Hydrological Feeds</strong>
+                                            <span>Live water stream sensor telemetry validation</span>
+                                        </div>
+                                    </div>
+                                    <div class="rag-step-arrow">&rarr;</div>
+                                    <div class="rag-step step-highlight">
+                                        <div class="step-badge"><span class="step-num">05</span></div>
+                                        <div class="step-desc">
+                                            <strong>Atomic Dispatch</strong>
+                                            <span>Row-locked shelter bed allocation &amp; tactical squad deploy</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tab 4: Concurrency & Key Metrics -->
+                    <div class="tab-content" id="tab-civicguard-systems" role="tabpanel">
+                        <div class="deepdive-section">
+                            <div class="section-title-wrap">
+                                <h4 class="deepdive-heading">Systems, Concurrency &amp; Operational Metrics</h4>
+                                <span class="deepdive-badge">Database Reliability</span>
+                            </div>
+
+                            <div class="project-metrics-grid in-modal-metrics">
+                                <div class="metric-item">
+                                    <span class="metric-val">250</span>
+                                    <span class="metric-lbl">Tactical Squads Coordinated</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-val">25</span>
+                                    <span class="metric-lbl">Administrative Districts</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-val">&lt; 1.5s</span>
+                                    <span class="metric-lbl">Inference SLA</span>
+                                </div>
+                                <div class="metric-item">
+                                    <span class="metric-val">Zero Conflict</span>
+                                    <span class="metric-lbl">Row-Level Atomic PostgreSQL Locking</span>
+                                </div>
+                            </div>
+
+                            <div class="deepdive-card">
+                                <h5>
+                                    <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                                    </svg>
+                                    Atomic Bed Reservation &amp; Concurrency Management
+                                </h5>
+                                <p>
+                                    During sudden mass evacuation surges, multiple relief officers and field squads simultaneously allocate beds across designated emergency shelters. To eliminate race-condition over-allocations and double-bookings:
+                                </p>
+                                <ul class="deepdive-list">
+                                    <li><strong>Row-Level Locking:</strong> Uses PostgreSQL transactional row-level locks (<code>SELECT ... FOR UPDATE</code>) on specific shelter room inventories.</li>
+                                    <li><strong>Atomic Transactions:</strong> Ensures reservation decrements, guest registration, and confirmation emit atomically within an isolated transaction boundary.</li>
+                                    <li><strong>Zero Double-Allocation Guarantee:</strong> Prevents overcrowding at shelters and guarantees that emergency capacity figures displayed in the Tactical Command Center reflect ground reality.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 2. SMART ATTENDANCE PANES -->
+                <div class="project-pane" id="pane-smart-attendance" data-project="smart-attendance">
+                    <div class="tab-content active" id="tab-smart-attendance-arch" role="tabpanel">
+                        <div class="deepdive-section">
+                            <div class="status-badge-prep">
+                                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 14 14"></polyline>
+                                </svg>
+                                <span>Visual architecture diagrams and screenshots in preparation</span>
+                            </div>
+
+                            <div class="section-title-wrap">
+                                <h4 class="deepdive-heading">Edge AI Biometric Verification &amp; Anti-Spoofing</h4>
+                                <span class="deepdive-badge">Privacy-by-Design</span>
+                            </div>
+                            <p class="deepdive-lead">
+                                Eliminates proxy attendance and presentation attacks in university lecture halls by coupling on-device MiniFASNet facial landmark tracking with randomized GPS geofencing.
+                            </p>
+
+                            <div class="deepdive-grid two-col">
+                                <div class="deepdive-card">
+                                    <h5>On-Device Vector Extraction</h5>
+                                    <p>Computes 192-dimensional vector embeddings directly inside the client device memory using MiniFASNet. Raw facial imagery never leaves the device or travels across network wires.</p>
+                                </div>
+                                <div class="deepdive-card">
+                                    <h5>Asynchronous Queue Architecture</h5>
+                                    <p>Check-in spikes from 500+ simultaneous students are buffered through distributed RabbitMQ message queues to worker pools, preventing API bottlenecks.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 3. FITLOCK PANES -->
+                <div class="project-pane" id="pane-fitlock" data-project="fitlock">
+                    <div class="tab-content active" id="tab-fitlock-arch" role="tabpanel">
+                        <div class="deepdive-section">
+                            <div class="status-badge-prep">
+                                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 14 14"></polyline>
+                                </svg>
+                                <span>Visual architecture diagrams and screenshots in preparation</span>
+                            </div>
+
+                            <div class="section-title-wrap">
+                                <h4 class="deepdive-heading">On-Device MediaPipe Kinematics &amp; Android Interceptor</h4>
+                                <span class="deepdive-badge">Live on Google Play</span>
+                            </div>
+                            <p class="deepdive-lead">
+                                FitLock tackles phone addiction by locking distracting apps behind verified physical exercises (squats, push-ups, jumping jacks), executing computer vision on-device without video transmission.
+                            </p>
+
+                            <div class="deepdive-grid two-col">
+                                <div class="deepdive-card">
+                                    <h5>33 3D Skeletal Landmark Tracking</h5>
+                                    <p>Calculates angular biomechanics between hip, knee, and ankle joints in real time via HTML5 Canvas, distinguishing partial reps from full-range exercises.</p>
+                                </div>
+                                <div class="deepdive-card">
+                                    <h5>Android Lifecycle Interception</h5>
+                                    <p>Native Android accessibility background services intercept target application launches and display the exercise challenge overlay.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4. HACKERRANK ORCHESTRATE PANES -->
+                <div class="project-pane" id="pane-hackerrank-orchestrate" data-project="hackerrank-orchestrate">
+                    <div class="tab-content active" id="tab-hackerrank-orchestrate-arch" role="tabpanel">
+                        <div class="deepdive-section">
+                            <div class="status-badge-prep">
+                                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 14 14"></polyline>
+                                </svg>
+                                <span>Visual architecture diagrams and screenshots in preparation</span>
+                            </div>
+
+                            <div class="section-title-wrap">
+                                <h4 class="deepdive-heading">Multi-Node LangGraph Deterministic State Machine</h4>
+                                <span class="deepdive-badge">Global Rank #81 / 1,400+</span>
+                            </div>
+                            <p class="deepdive-lead">
+                                An autonomous multi-node agentic workflow built with LangGraph, ChromaDB, and Google GenAI to resolve customer support tickets across HackerRank, Claude, and Visa domains without external web dependencies.
+                            </p>
+
+                            <div class="deepdive-grid two-col">
+                                <div class="deepdive-card">
+                                    <h5>Embedded ChromaDB RAG</h5>
+                                    <p>Indexes multi-domain knowledge bases using HuggingFace all-MiniLM-L6-v2 embeddings for grounded, zero-hallucination document synthesis.</p>
+                                </div>
+                                <div class="deepdive-card">
+                                    <h5>Type-Safe Pydantic Routing</h5>
+                                    <p>Enforces strict output schemas with Pydantic (.with_structured_output), asyncio.Semaphore concurrency, and Tenacity exponential retry.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 5. PRAJANAVIGATOR PANES -->
+                <div class="project-pane" id="pane-prajanavigator" data-project="prajanavigator">
+                    <div class="tab-content active" id="tab-prajanavigator-arch" role="tabpanel">
+                        <div class="deepdive-section">
+                            <div class="status-badge-prep">
+                                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <polyline points="12 6 12 12 14 14"></polyline>
+                                </svg>
+                                <span>Visual architecture diagrams and screenshots in preparation</span>
+                            </div>
+
+                            <div class="section-title-wrap">
+                                <h4 class="deepdive-heading">3-Layer Hierarchical RAG &amp; Citizen Flow</h4>
+                                <span class="deepdive-badge">Hackathon Winner</span>
+                            </div>
+                            <p class="deepdive-lead">
+                                Modernizes public administration by guiding citizens through a 5-step automated documentation workflow powered by a 3-layer Hierarchical RAG engine.
+                            </p>
+
+                            <div class="rag-pipeline-container modal-praja-pipeline">
+                                <div class="rag-pipeline-steps">
+                                    <div class="rag-step">
+                                        <div class="step-badge"><span class="step-num">01</span></div>
+                                        <div class="step-desc"><strong>Identify Service</strong><span>NLP intent classifier</span></div>
+                                    </div>
+                                    <div class="rag-step-arrow">&rarr;</div>
+                                    <div class="rag-step">
+                                        <div class="step-badge"><span class="step-num">02</span></div>
+                                        <div class="step-desc"><strong>Dynamic MCQs</strong><span>Contextual questionnaire</span></div>
+                                    </div>
+                                    <div class="rag-step-arrow">&rarr;</div>
+                                    <div class="rag-step">
+                                        <div class="step-badge"><span class="step-num">03</span></div>
+                                        <div class="step-desc"><strong>Create Forms</strong><span>Schema generator</span></div>
+                                    </div>
+                                    <div class="rag-step-arrow">&rarr;</div>
+                                    <div class="rag-step">
+                                        <div class="step-badge"><span class="step-num">04</span></div>
+                                        <div class="step-desc"><strong>Document Autofill</strong><span>Multimodal OCR</span></div>
+                                    </div>
+                                    <div class="rag-step-arrow">&rarr;</div>
+                                    <div class="rag-step step-highlight">
+                                        <div class="step-badge"><span class="step-num">05</span></div>
+                                        <div class="step-desc"><strong>Visit Roadmap</strong><span>Pre-counter checklist</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Fullscreen Lightbox Zoom Overlay -->
+    <div id="imageLightbox" class="image-lightbox" aria-hidden="true" role="dialog" aria-label="Image preview">
+        <div class="lightbox-overlay" id="lightboxOverlay"></div>
+        <div class="lightbox-container">
+            <button type="button" class="lightbox-close" id="lightboxCloseBtn" aria-label="Close image preview">
+                <svg class="svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="lightbox-img-wrap">
+                <img id="lightboxImg" src="" alt="High-resolution architecture diagram" />
+            </div>
+            <p id="lightboxCaption" class="lightbox-caption"></p>
+        </div>
+    </div>
+
     <footer>
         <div class="container footer-container">
-
             <p>&copy; 2026 Savindu Suranjith Thennakoon. All rights reserved.</p>
         </div>
     </footer>

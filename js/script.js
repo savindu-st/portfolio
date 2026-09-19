@@ -307,6 +307,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initialize 3D Hero Canvas
     initHero3DCanvas();
+
+    // Initialize Project Deep-Dive Modals & Lightbox
+    initProjectModals();
 });
 
 /* =========================================================================
@@ -1215,3 +1218,243 @@ function initHero3DCanvas() {
     setTimeout(handleResize, 50);
     animate();
 }
+
+/* =========================================================================
+   Project Deep-Dive Modals & Lightbox System
+   ========================================================================= */
+function initProjectModals() {
+    const modal = document.getElementById('projectModal');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const modalProjectTitle = document.getElementById('modalProjectTitle');
+    const modalProjectSubtitle = document.getElementById('modalProjectSubtitle');
+    const modalProjectCategory = document.getElementById('modalProjectCategory');
+    const modalRepoLink = document.getElementById('modalRepoLink');
+    const modalRepoText = document.getElementById('modalRepoText');
+    const modalTabsBar = document.getElementById('modalTabsBar');
+    const projectPanes = document.querySelectorAll('.project-pane');
+    const detailButtons = document.querySelectorAll('.btn-project-details');
+
+    // Lightbox elements
+    const lightbox = document.getElementById('imageLightbox');
+    const lightboxOverlay = document.getElementById('lightboxOverlay');
+    const lightboxCloseBtn = document.getElementById('lightboxCloseBtn');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+
+    if (!modal) return;
+
+    const projectData = {
+        'civicguard': {
+            title: 'CivicGuard',
+            subtitle: 'Disaster Response & Emergency Intelligence Platform',
+            category: 'HIGH-CONCURRENCY MICROSERVICES',
+            repoUrl: 'https://github.com/savindu-st/CivicGuard',
+            repoText: 'View Repository',
+            tabs: [
+                { id: 'tab-civicguard-arch', label: 'System Architecture', num: '01' },
+                { id: 'tab-civicguard-dash', label: 'Tactical Dashboards', num: '02' },
+                { id: 'tab-civicguard-triage', label: 'Intelligence Engine', num: '03' },
+                { id: 'tab-civicguard-systems', label: 'Systems & Concurrency', num: '04' }
+            ]
+        },
+        'smart-attendance': {
+            title: 'Smart Attendance Platform',
+            subtitle: 'Enterprise Biometric Verification & Anti-Spoofing Architecture',
+            category: 'EDGE AI & DISTRIBUTED QUEUES',
+            repoUrl: 'https://github.com/SmartAttendancePlatform-CS3202',
+            repoText: 'View Organization',
+            tabs: [
+                { id: 'tab-smart-attendance-arch', label: 'Architecture & Edge AI', num: '01' }
+            ]
+        },
+        'fitlock': {
+            title: 'FitLock',
+            subtitle: 'AI App-Locker with On-Device Exercise Computer Vision',
+            category: 'ON-DEVICE COMPUTER VISION',
+            repoUrl: 'https://play.google.com/store/apps/details?id=com.savindu.fitlock',
+            repoText: 'Google Play Store',
+            tabs: [
+                { id: 'tab-fitlock-arch', label: 'CV Architecture & Android', num: '01' }
+            ]
+        },
+        'hackerrank-orchestrate': {
+            title: 'HackerRank Orchestrate AI Agent',
+            subtitle: 'Deterministic Multi-Domain Support Workflow (Global Rank #81)',
+            category: 'AGENTIC STATE MACHINE & RAG',
+            repoUrl: 'https://github.com/savindu-st/hackerrank_orchestrate',
+            repoText: 'View Repository',
+            tabs: [
+                { id: 'tab-hackerrank-orchestrate-arch', label: 'LangGraph & ChromaDB', num: '01' }
+            ]
+        },
+        'prajanavigator': {
+            title: 'PrajaNavigator',
+            subtitle: 'AI Public Administration Platform & Multimodal Document Intelligence',
+            category: 'HIERARCHICAL RAG & MULTI-AGENT',
+            repoUrl: 'https://github.com/savindu-st/AGENTRIX26-TEAM21-QuadNova',
+            repoText: 'View Repository',
+            tabs: [
+                { id: 'tab-prajanavigator-arch', label: '5-Step Flow & Hierarchical RAG', num: '01' }
+            ]
+        }
+    };
+
+    function openProjectModal(projectId) {
+        const data = projectData[projectId];
+        if (!data) return;
+
+        // Set Header details
+        if (modalProjectTitle) modalProjectTitle.textContent = data.title;
+        if (modalProjectSubtitle) modalProjectSubtitle.textContent = data.subtitle;
+        if (modalProjectCategory) modalProjectCategory.textContent = data.category;
+        if (modalRepoLink) {
+            modalRepoLink.href = data.repoUrl;
+            if (modalRepoText) modalRepoText.textContent = data.repoText;
+        }
+
+        // Activate corresponding pane
+        projectPanes.forEach(pane => {
+            if (pane.getAttribute('data-project') === projectId) {
+                pane.classList.add('active');
+            } else {
+                pane.classList.remove('active');
+            }
+        });
+
+        const activePane = document.getElementById(`pane-${projectId}`);
+
+        // Populate Tabs
+        if (modalTabsBar) {
+            modalTabsBar.innerHTML = '';
+            data.tabs.forEach((tab, index) => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = `modal-tab-btn ${index === 0 ? 'active' : ''}`;
+                btn.setAttribute('role', 'tab');
+                btn.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
+                btn.innerHTML = `<span class="tab-num">${tab.num}</span> <span>${tab.label}</span>`;
+
+                btn.addEventListener('click', () => {
+                    // Switch tab active states
+                    modalTabsBar.querySelectorAll('.modal-tab-btn').forEach(b => {
+                        b.classList.remove('active');
+                        b.setAttribute('aria-selected', 'false');
+                    });
+                    btn.classList.add('active');
+                    btn.setAttribute('aria-selected', 'true');
+
+                    // Switch tab content in active pane
+                    if (activePane) {
+                        activePane.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+                        const targetContent = document.getElementById(tab.id);
+                        if (targetContent) targetContent.classList.add('active');
+                    }
+                });
+
+                modalTabsBar.appendChild(btn);
+            });
+        }
+
+        // Reset active tab content to first
+        if (activePane) {
+            const tabContents = activePane.querySelectorAll('.tab-content');
+            tabContents.forEach((tc, idx) => {
+                if (idx === 0) tc.classList.add('active');
+                else tc.classList.remove('active');
+            });
+        }
+
+        // Show Modal
+        if (typeof modal.showModal === 'function') {
+            modal.showModal();
+        } else {
+            modal.setAttribute('open', '');
+        }
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeProjectModal() {
+        if (typeof modal.close === 'function') {
+            modal.close();
+        } else {
+            modal.removeAttribute('open');
+        }
+        document.body.style.overflow = '';
+    }
+
+    // Attach click listeners to all detail buttons
+    detailButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const projectId = btn.getAttribute('data-project');
+            if (projectId) openProjectModal(projectId);
+        });
+    });
+
+    // Close button
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', closeProjectModal);
+    }
+
+    // Close modal on escape or native close
+    modal.addEventListener('close', () => {
+        document.body.style.overflow = '';
+    });
+
+    // Light-dismiss: click on backdrop
+    modal.addEventListener('click', (e) => {
+        const rect = modal.getBoundingClientRect();
+        const isInDialog = (
+            rect.top <= e.clientY && e.clientY <= rect.top + rect.height &&
+            rect.left <= e.clientX && e.clientX <= rect.left + rect.width
+        );
+        if (!isInDialog) {
+            closeProjectModal();
+        }
+    });
+
+    // ================= Image Lightbox Zoom Handlers =================
+    function openLightbox(src, caption) {
+        if (!lightbox || !lightboxImg) return;
+        lightboxImg.src = src;
+        if (lightboxCaption) lightboxCaption.textContent = caption || '';
+        lightbox.classList.add('active');
+        lightbox.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeLightbox() {
+        if (!lightbox) return;
+        lightbox.classList.remove('active');
+        lightbox.setAttribute('aria-hidden', 'true');
+        if (lightboxImg) lightboxImg.src = '';
+    }
+
+    // Event delegation for diagram zoom cards
+    document.addEventListener('click', (e) => {
+        const zoomCard = e.target.closest('.diagram-showcase-card[data-zoom-src]');
+        if (zoomCard) {
+            const src = zoomCard.getAttribute('data-zoom-src');
+            const caption = zoomCard.getAttribute('data-zoom-caption');
+            if (src) openLightbox(src, caption);
+        }
+    });
+
+    if (lightboxCloseBtn) {
+        lightboxCloseBtn.addEventListener('click', closeLightbox);
+    }
+    if (lightboxOverlay) {
+        lightboxOverlay.addEventListener('click', closeLightbox);
+    }
+
+    // Escape key handling for lightbox
+    window.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (lightbox && lightbox.classList.contains('active')) {
+                e.preventDefault();
+                e.stopPropagation();
+                closeLightbox();
+            }
+        }
+    });
+}
+

@@ -17,6 +17,12 @@ portfolio/
 │   ├── favicon.svg     # Futuristic monogram site favicon
 │   ├── image.png       # High-resolution profile portrait
 │   └── savindu's_cv.pdf # Downloadable resume
+├── projects/           # Dedicated project documentation & system architectures
+│   ├── civicguard/
+│   ├── smart-attendance/
+│   ├── fitlock/
+│   ├── hackerrank-orchestrate/
+│   └── prajanavigator/
 └── README.md           # Project documentation
 ```
 
